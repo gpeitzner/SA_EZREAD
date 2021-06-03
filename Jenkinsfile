@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                python3 ./src/backend/autenticacion/login/test.py
+                sh "python3 ./src/backend/autenticacion/login/test.py"
             }
         }
         stage('Test') {
