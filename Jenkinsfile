@@ -4,7 +4,6 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh echo "BACKEND TEST ... "
                 python3 ./src/backend/autenticacion/login/test.py
             }
         }
