@@ -14,7 +14,7 @@ db = client[str(db_name)]
 col = db["usuarios"]
 
 class Usuario:
-    def __init__(self, tipo,nombre,apellido,correo,password,telefono,direccion):
+    def __init__(self, tipo,nombre,apellido,correo,password,telefono,direccion,activo):
         self.tipo = tipo
         self.nombre = nombre
         self.apellido = apellido
@@ -22,6 +22,7 @@ class Usuario:
         self.password = password
         self.telefono = telefono
         self.direccion = direccion
+        self.activo = activo
     
     def toJson(self):
         return {
@@ -31,20 +32,27 @@ class Usuario:
             "correo": self.correo,
             "password":self.password,
             "telefono":self.telefono,
-            "direccion":self.direccion
+            "direccion":self.direccion,
+            "activo":self.activo
         }
 
 @app.route("/create", methods=["POST"])
 def login():
     tipo = request.form.get("tipo","cliente")
     nombre = request.form["nombre"]
-    apellido = request.form["apellido"]
+    apellido = request.form.get("apellido","")
     correo = request.form["correo"]
     password = request.form["password"]
-    telefono = request.form["telefono"]
-    direccion = request.form["direccion"]
-    new_user = Usuario(tipo,nombre,apellido,correo,password,telefono,direccion)
+    telefono = request.form.get("telefono","")
+    direccion = request.form.get("direccion","")
+    if tipo=="cliente":
+        new_user = Usuario(tipo,nombre,apellido,correo,password,telefono,direccion,1)
+    elif tipo=="administrador":
+        new_user = Usuario(tipo,nombre,apellido,correo,password,telefono,direccion,1)
+    else:
+        new_user = Usuario(tipo,nombre,apellido,correo,password,telefono,direccion,0)
     print(new_user.toJson())
+    col.insert_one(new_user.toJson())
     return "Ok"
 
 @app.route("/")
