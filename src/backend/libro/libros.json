@@ -1,0 +1,305 @@
+[
+	{
+		"Editorial": "Alienta",
+		"Titulo": "Código no verbal",
+		"Género": "Autoayuda",
+		"Autor" : "Sonia El Hakim"
+	},
+	{
+		"Editorial": "Alienta",
+		"Titulo": "Vende a la mente, no a la gente",
+		"Género": "Finanzas",
+		"Autor" : "Jürgen Klaric"
+	},
+
+	{
+		"Editorial": "Alienta",
+		"Titulo": "El camino del inversor",
+		"Género": "Economía",
+		"Autor" : "Javier del Valle y Fernando Ruiz de Velasco"
+	},
+
+	{
+		"Editorial": "Alienta",
+		"Titulo": "Aprendiendo de los mejores",
+		"Género": "Autoayuda",
+		"Autor" : "Francisco Alcaide Hernández"
+	},
+	{
+		"Editorial": "Alienta",
+		"Titulo": "Obras completas",
+		"Género": "Religion",
+		"Autor" : "Miyamoto Musashi"
+	},
+	{
+		"Editorial": "Alienta",
+		"Titulo": "El Gym y el ñam",
+		"Género": "Nutricion",
+		"Autor" : "Ruben García Carnicero"
+	},
+	{
+		"Editorial": "Alienta",
+		"Titulo": "¡Es la microbiota, idiota",
+		"Género": "Nutricion",
+		"Autor" : "Sari Arponen"
+	},
+	{
+		"Editorial": "Alienta",
+		"Titulo": "Irrompible",
+		"Género": "Autoayuda",
+		"Autor" : "Francisco García Vena"
+	},
+	{
+		"Editorial": "Alienta",
+		"Titulo": "Los 88 peldaños del éxito",
+		"Género": "Autoayuda",
+		"Autor" : "Anxo Perez Rodriguez"
+	},
+	{
+		"Editorial": "Alienta",
+		"Titulo": "El tao de Warren Buffett",
+		"Género": "Economía",
+		"Autor" : "Mary Buffet y David Clark"
+	},
+	{
+		"Editorial": "Planeta Comic",
+		"Titulo": "Las Guerras de las galaxias",
+		"Género": "Ciencia Ficción",
+		"Autor" : "AA. VV."
+	},
+	{
+		"Editorial": "Planeta Comic",
+		"Titulo": "Los Tres Fantasmas de Tesla",
+		"Género": "Ciencia Ficción",
+		"Autor" : "Marazano Richard"
+	},
+	{
+		"Editorial": "Planeta Comic",
+		"Titulo": "Star Wars Discipulo oscuro",
+		"Género": "Ciencia Ficción",
+		"Autor" : "Christie Golden"
+	},
+	{
+		"Editorial": "Planeta Comic",
+		"Titulo": "Star Wars Ahsoka (novela)",
+		"Género": "Ciencia Ficción",
+		"Autor" : "E. K. Johnston"
+	},
+	{
+		"Editorial": "Planeta Comic",
+		"Titulo": "Windhaven",
+		"Género": "Comic y manga juvenil",
+		"Autor" : "George R. R. Martin"
+	},
+	{
+		"Editorial": "Planeta Comic",
+		"Titulo": "Dragon Ball Serie Roja n271",
+		"Género": "Comic y manga juvenil",
+		"Autor" : "Akira Toriyama"
+	},
+	{
+		"Editorial": "Planeta Comic",
+		"Titulo": "Garfield 2016-2018",
+		"Género": "Comic y manga juvenil",
+		"Autor" : "Jim Davis"
+	},
+	{
+		"Editorial": "Planeta Comic",
+		"Titulo": "A de Anonymus",
+		"Género": "Novela Gráfica",
+		"Autor" : "David Kushner y Koren Shadmi"
+	},
+	{
+		"Editorial": "Planeta Comic",
+		"Titulo": "Coronavirus",
+		"Género": "Novela Gráfica",
+		"Autor" : "Ana Polegre, Enfermera en apuros"
+	},
+	{
+		"Editorial": "Planeta Comic",
+		"Titulo": "Creepshow de Stephen King y Bernie Wrightson",
+		"Género": "Novela Gráfica",
+		"Autor" : "Stephen King y Bernie Wrightson"
+	},
+	{
+		"Editorial": "Tusquets Editores S.A",
+		"Titulo": "Imperio, Crónicas de los invasores II",
+		"Género": "Ciencia Ficción",
+		"Autor" : "John Connolly y Jennifer Ridyard"
+	},
+	{
+		"Editorial": "Tusquets Editores S.A",
+		"Titulo": "El espacio culinario",
+		"Género": "Cocina",
+		"Autor" : "Miguel Espinet"
+	},
+	{
+		"Editorial": "Tusquets Editores S.A",
+		"Titulo": "El sabor de Cuba",
+		"Género": "Cocina",
+		"Autor" : "René Vásquez Díaz"
+	},
+	{
+		"Editorial": "Tusquets Editores S.A",
+		"Titulo": "Vinos de Espania",
+		"Género": "Cocina",
+		"Autor" : "Julian Jeff"
+	},
+	{
+		"Editorial": "Tusquets Editores S.A",
+		"Titulo": "La fisica Cuantica del futuro",
+		"Género": "Ciencia",
+		"Autor" : "Hans Christian von Baeyer"
+	},
+	{
+		"Editorial": "Tusquets Editores S.A",
+		"Titulo": "La entropia desvelada",
+		"Género": "Ciencia",
+		"Autor" : "Arieh Ben-Naim"
+	},
+	{
+		"Editorial": "Tusquets Editores S.A",
+		"Titulo": "El jazz de la Física",
+		"Género": "Ciencia",
+		"Autor" : "Stefphon Alexander"
+	},
+	{
+		"Editorial": "Tusquets Editores S.A",
+		"Titulo": "Un maestro de arquitectos en Barcelona",
+		"Género": "Arte",
+		"Autor" : "Federico Correo"
+	},
+	{
+		"Editorial": "Tusquets Editores S.A",
+		"Titulo": "El drama del niño dotado",
+		"Género": "Psicología",
+		"Autor" : "Alice Miller"
+	},
+	{
+		"Editorial": "Tusquets Editores S.A",
+		"Titulo": "El caso del inocente niño asesino",
+		"Género": "Psicología",
+		"Autor" : "André Gide"
+	},
+	{
+		"Editorial": "Click Ediciones",
+		"Titulo": "Maldita Reliquia",
+		"Género": "Humor",
+		"Autor" : "David José Balleser"
+	},
+	{
+		"Editorial": "Click Ediciones",
+		"Titulo": "El renacer los monstruos",
+		"Género": "Humor",
+		"Autor" : "Francesc Marí"
+	},
+	{
+		"Editorial": "Click Ediciones",
+		"Titulo": "Controlar lo incontrolable",
+		"Género": "Autoayuda",
+		"Autor" : "Artur Amich"
+	},
+	{
+		"Editorial": "Click Ediciones",
+		"Titulo": "El club de los aventureros y los hombres de plata",
+		"Género": "Infantil",
+		"Autor" : "Enrique Gómez Medina"
+	},
+	{
+		"Editorial": "Click Ediciones",
+		"Titulo": "Todo de mí",
+		"Género": "Novela Romántica",
+		"Autor" : "Moruena Estríngana"
+	},
+	{
+		"Editorial": "Click Ediciones",
+		"Titulo": "La marquesa de Connemara",
+		"Género": "Novela Romántica",
+		"Autor" : "J. F. Morgan"
+	},
+	{
+		"Editorial": "Click Ediciones",
+		"Titulo": "La leyenda de la mariposa azul",
+		"Género": "Novela Romántica",
+		"Autor" : "Calista Sweet"
+	},
+	{
+		"Editorial": "Click Ediciones",
+		"Titulo": "La España fabulosa",
+		"Género": "Viajes",
+		"Autor" : "Jesus Callejo"
+	},
+
+	{
+		"Editorial": "Click Ediciones",
+		"Titulo": "Tex Kerba",
+		"Género": "Viajes",
+		"Autor" : "Miguel Angel Francisco"
+	},
+	{
+		"Editorial": "Click Ediciones",
+		"Titulo": "Cerebro y Ordenador",
+		"Género": "Ciencia",
+		"Autor" : "Antonio Orbe"
+	},
+	{
+		"Editorial": "Espasa",
+		"Titulo": "Entre lobos y autómatas",
+		"Género": "Filosofía",
+		"Autor" : "Antonio Orbe"
+	},
+	{
+		"Editorial": "Espasa",
+		"Titulo": "La Rebelión de las masas",
+		"Género": "Filosofía",
+		"Autor" : "José Ortega y Gasset"
+	},
+	{
+		"Editorial": "Espasa",
+		"Titulo": "HItos del sentido",
+		"Género": "Filosofía",
+		"Autor" : "Antonio Escohotado"
+	},
+	{
+		"Editorial": "Espasa",
+		"Titulo": "Emocionarte. La doble vida de los cuadros",
+		"Género": "Ciencias Humanas y sociales",
+		"Autor" : "Carlos del Amor"
+	},
+	{
+		"Editorial": "Espasa",
+		"Titulo": "Un ciudadano libre",
+		"Género": "Ciencias Humanas y sociales",
+		"Autor" : "Albert Rivera"
+	},
+	{
+		"Editorial": "Espasa",
+		"Titulo": "La guerra mas larga de la Historia",
+		"Género": "Ciencias Humanas y sociales",
+		"Autor" : "Lola Venegags, Isabe M. Reverte y Margo Venegas"
+	},
+	{
+		"Editorial": "Espasa",
+		"Titulo": "Despleagando velas",
+		"Género": "Ciencias Humanas y sociales",
+		"Autor" : "Cristina Villanueva"
+	},
+	{
+		"Editorial": "Espasa",
+		"Titulo": "Déjame entrar",
+		"Género": "Terror",
+		"Autor" : "John Ajvide LIndqvist"
+	},
+	{
+		"Editorial": "Espasa",
+		"Titulo": "La Zona",
+		"Género": "Terror",
+		"Autor" : "Juan Miguel Aguilera"
+	},
+	{
+		"Editorial": "Espasa",
+		"Titulo": "Hay alguien ahí",
+		"Género": "Terror",
+		"Autor" : "Jorge Magano"
+	}
+]
