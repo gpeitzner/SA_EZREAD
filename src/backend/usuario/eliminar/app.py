@@ -1,4 +1,5 @@
-from flask import Flask
+from flask import Flask, redirect, url_for, render_template, request
+from bson.objectid import ObjectId
 import os
 import pymongo
 
@@ -13,7 +14,16 @@ client = pymongo.MongoClient(db_host, db_port)
 db = client[str(db_name)]
 col = db["usuarios"]
 
+@app.route("/users/<string:id>", methods=["DELETE"])
+def remove(id):
+    Qid = ObjectId(id)
+    myquery = { "_id": Qid }
+    col.delete_one(myquery)
+    return {"mensaje":"Eliminado"}
 
 @app.route("/")
 def main():
-    return "<p>usuario_eliminar</p>"
+    return "<p>ELIMINAR USUARIO</p>"
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0",debug=True,port=5004)  
