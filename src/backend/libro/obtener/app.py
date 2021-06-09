@@ -17,6 +17,10 @@ db = client[str(db_name)]
 col = db["libros"]
 
 
+@app.route("/")
+def main2():
+    return "<p>libro_obtener</p>"
+
 @app.route("/libros")  # obbtener todos los libros registrados.
 def main():
     if request.method == 'GET':

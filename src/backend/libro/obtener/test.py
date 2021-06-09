@@ -6,11 +6,11 @@ class FlaskTest(unittest.TestCase):
 
     def test_default(self):
         tester = app.test_client(self)
-        response = tester.get("/libros")
+        response = tester.get("/")
         status_code = response.status_code
         data = response.data.decode("utf-8")
         self.assertEquals(status_code, 200)
-        #self.assertEquals(data, '<p>libro_obtener</p>')
+        self.assertEquals(data, '<p>libro_obtener</p>')
 
 
 if __name__ == '__main__':
