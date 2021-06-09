@@ -10,7 +10,7 @@ class FlaskTest(unittest.TestCase):
         status_code = response.status_code
         data = response.data.decode("utf-8")
         self.assertEquals(status_code, 200)
-        self.assertEquals(data, '<p>usuario_eliminar</p>')
+        self.assertEquals(data, '<p>ELIMINAR USUARIO</p>')
 
 
 if __name__ == '__main__':
