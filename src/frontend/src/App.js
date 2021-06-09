@@ -5,7 +5,7 @@ import {
 } from "react-router-dom";
 import Login from './containers/Login'
 import Register from './containers/Register'
-
+import Main from './containers/Main'
 
 
 
@@ -20,7 +20,7 @@ const App = () => {
             <Register />
           </Route>
           <Route path="/">
-            <div />
+            <Main />
           </Route>
         </Switch>
     </Router>
