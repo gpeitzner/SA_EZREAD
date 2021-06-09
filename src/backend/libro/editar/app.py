@@ -60,22 +60,23 @@ def descontarQuantity():
             cantidadStock = int(str(libro["Cantidad"]))
 
             if cantidadStock > 0:
-                cantidadStock = cantidadStock - 1
+                if cantidadStock > int(content["cantidad"]):
 
-                resultado = col.update_one(
-                    {
-                        "_id": ObjectId(content["id"])
-                    },
-                    {
-                        '$set': {
-                            "Cantidad":cantidadStock
-                        }
-                    })
-                cant = cant + resultado.modified_count
+                    cantidadStock = cantidadStock - int(content["cantidad"])
 
-                return {"modificado": cant, "nueva Cantidad": cantidadStock}
-            else:
-                return {"modificado": cant, "nueva Cantidad": cantidadStock}
+                    resultado = col.update_one(
+                        {
+                            "_id": ObjectId(content["id"])
+                        },
+                        {
+                            '$set': {
+                                "Cantidad": cantidadStock
+                            }
+                        })
+                    cant = cant + resultado.modified_count
+
+                    return {"modificado": cant, "nueva Cantidad": cantidadStock}
+            return {"mensaje": "Cantidad insuficiente en stock"}
 
         else:
             return {"mensaje": "Libro no existe"}
