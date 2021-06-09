@@ -2,304 +2,405 @@
 	{
 		"Editorial": "Alienta",
 		"Titulo": "Código no verbal",
-		"Género": "Autoayuda",
-		"Autor" : "Sonia El Hakim"
+		"Genero": "Autoayuda",
+		"Autor" : "Sonia El Hakim",
+        "Activo": 1,
+		"Cantidad" : 25
+
 	},
 	{
 		"Editorial": "Alienta",
 		"Titulo": "Vende a la mente, no a la gente",
-		"Género": "Finanzas",
-		"Autor" : "Jürgen Klaric"
+		"Genero": "Finanzas",
+		"Autor" : "Jürgen Klaric",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 
 	{
 		"Editorial": "Alienta",
 		"Titulo": "El camino del inversor",
-		"Género": "Economía",
-		"Autor" : "Javier del Valle y Fernando Ruiz de Velasco"
+		"Genero": "Economía",
+		"Autor" : "Javier del Valle y Fernando Ruiz de Velasco",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 
 	{
 		"Editorial": "Alienta",
 		"Titulo": "Aprendiendo de los mejores",
-		"Género": "Autoayuda",
-		"Autor" : "Francisco Alcaide Hernández"
+		"Genero": "Autoayuda",
+		"Autor" : "Francisco Alcaide Hernández",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Alienta",
 		"Titulo": "Obras completas",
-		"Género": "Religion",
-		"Autor" : "Miyamoto Musashi"
+		"Genero": "Religion",
+		"Autor" : "Miyamoto Musashi",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Alienta",
 		"Titulo": "El Gym y el ñam",
-		"Género": "Nutricion",
-		"Autor" : "Ruben García Carnicero"
+		"Genero": "Nutricion",
+		"Autor" : "Ruben García Carnicero",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Alienta",
 		"Titulo": "¡Es la microbiota, idiota",
-		"Género": "Nutricion",
-		"Autor" : "Sari Arponen"
+		"Genero": "Nutricion",
+		"Autor" : "Sari Arponen",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Alienta",
 		"Titulo": "Irrompible",
-		"Género": "Autoayuda",
-		"Autor" : "Francisco García Vena"
+		"Genero": "Autoayuda",
+		"Autor" : "Francisco García Vena",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Alienta",
 		"Titulo": "Los 88 peldaños del éxito",
-		"Género": "Autoayuda",
-		"Autor" : "Anxo Perez Rodriguez"
+		"Genero": "Autoayuda",
+		"Autor" : "Anxo Perez Rodriguez",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Alienta",
 		"Titulo": "El tao de Warren Buffett",
-		"Género": "Economía",
-		"Autor" : "Mary Buffet y David Clark"
+		"Genero": "Economía",
+		"Autor" : "Mary Buffet y David Clark",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Planeta Comic",
 		"Titulo": "Las Guerras de las galaxias",
-		"Género": "Ciencia Ficción",
-		"Autor" : "AA. VV."
+		"Genero": "Ciencia Ficción",
+		"Autor" : "AA. VV.",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Planeta Comic",
 		"Titulo": "Los Tres Fantasmas de Tesla",
-		"Género": "Ciencia Ficción",
-		"Autor" : "Marazano Richard"
+		"Genero": "Ciencia Ficción",
+		"Autor" : "Marazano Richard",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Planeta Comic",
 		"Titulo": "Star Wars Discipulo oscuro",
-		"Género": "Ciencia Ficción",
-		"Autor" : "Christie Golden"
+		"Genero": "Ciencia Ficción",
+		"Autor" : "Christie Golden",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Planeta Comic",
 		"Titulo": "Star Wars Ahsoka (novela)",
-		"Género": "Ciencia Ficción",
-		"Autor" : "E. K. Johnston"
+		"Genero": "Ciencia Ficción",
+		"Autor" : "E. K. Johnston",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Planeta Comic",
 		"Titulo": "Windhaven",
-		"Género": "Comic y manga juvenil",
-		"Autor" : "George R. R. Martin"
+		"Genero": "Comic y manga juvenil",
+		"Autor" : "George R. R. Martin",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Planeta Comic",
 		"Titulo": "Dragon Ball Serie Roja n271",
-		"Género": "Comic y manga juvenil",
-		"Autor" : "Akira Toriyama"
+		"Genero": "Comic y manga juvenil",
+		"Autor" : "Akira Toriyama",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Planeta Comic",
 		"Titulo": "Garfield 2016-2018",
-		"Género": "Comic y manga juvenil",
-		"Autor" : "Jim Davis"
+		"Genero": "Comic y manga juvenil",
+		"Autor" : "Jim Davis",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Planeta Comic",
 		"Titulo": "A de Anonymus",
-		"Género": "Novela Gráfica",
-		"Autor" : "David Kushner y Koren Shadmi"
+		"Genero": "Novela Gráfica",
+		"Autor" : "David Kushner y Koren Shadmi",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Planeta Comic",
 		"Titulo": "Coronavirus",
-		"Género": "Novela Gráfica",
-		"Autor" : "Ana Polegre, Enfermera en apuros"
+		"Genero": "Novela Gráfica",
+		"Autor" : "Ana Polegre, Enfermera en apuros",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Planeta Comic",
 		"Titulo": "Creepshow de Stephen King y Bernie Wrightson",
-		"Género": "Novela Gráfica",
-		"Autor" : "Stephen King y Bernie Wrightson"
+		"Genero": "Novela Gráfica",
+		"Autor" : "Stephen King y Bernie Wrightson",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Tusquets Editores S.A",
 		"Titulo": "Imperio, Crónicas de los invasores II",
-		"Género": "Ciencia Ficción",
-		"Autor" : "John Connolly y Jennifer Ridyard"
+		"Genero": "Ciencia Ficción",
+		"Autor" : "John Connolly y Jennifer Ridyard",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Tusquets Editores S.A",
 		"Titulo": "El espacio culinario",
-		"Género": "Cocina",
-		"Autor" : "Miguel Espinet"
+		"Genero": "Cocina",
+		"Autor" : "Miguel Espinet",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Tusquets Editores S.A",
 		"Titulo": "El sabor de Cuba",
-		"Género": "Cocina",
-		"Autor" : "René Vásquez Díaz"
+		"Genero": "Cocina",
+		"Autor" : "René Vásquez Díaz",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Tusquets Editores S.A",
 		"Titulo": "Vinos de Espania",
-		"Género": "Cocina",
-		"Autor" : "Julian Jeff"
+		"Genero": "Cocina",
+		"Autor" : "Julian Jeff",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Tusquets Editores S.A",
 		"Titulo": "La fisica Cuantica del futuro",
-		"Género": "Ciencia",
-		"Autor" : "Hans Christian von Baeyer"
+		"Genero": "Ciencia",
+		"Autor" : "Hans Christian von Baeyer",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Tusquets Editores S.A",
 		"Titulo": "La entropia desvelada",
-		"Género": "Ciencia",
-		"Autor" : "Arieh Ben-Naim"
+		"Genero": "Ciencia",
+		"Autor" : "Arieh Ben-Naim",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Tusquets Editores S.A",
 		"Titulo": "El jazz de la Física",
-		"Género": "Ciencia",
-		"Autor" : "Stefphon Alexander"
+		"Genero": "Ciencia",
+		"Autor" : "Stefphon Alexander",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Tusquets Editores S.A",
 		"Titulo": "Un maestro de arquitectos en Barcelona",
-		"Género": "Arte",
-		"Autor" : "Federico Correo"
+		"Genero": "Arte",
+		"Autor" : "Federico Correo",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Tusquets Editores S.A",
 		"Titulo": "El drama del niño dotado",
-		"Género": "Psicología",
-		"Autor" : "Alice Miller"
+		"Genero": "Psicología",
+		"Autor" : "Alice Miller",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Tusquets Editores S.A",
 		"Titulo": "El caso del inocente niño asesino",
-		"Género": "Psicología",
-		"Autor" : "André Gide"
+		"Genero": "Psicología",
+		"Autor" : "André Gide",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Click Ediciones",
 		"Titulo": "Maldita Reliquia",
-		"Género": "Humor",
-		"Autor" : "David José Balleser"
+		"Genero": "Humor",
+		"Autor" : "David José Balleser",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Click Ediciones",
 		"Titulo": "El renacer los monstruos",
-		"Género": "Humor",
-		"Autor" : "Francesc Marí"
+		"Genero": "Humor",
+		"Autor" : "Francesc Marí",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Click Ediciones",
 		"Titulo": "Controlar lo incontrolable",
-		"Género": "Autoayuda",
-		"Autor" : "Artur Amich"
+		"Genero": "Autoayuda",
+		"Autor" : "Artur Amich",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Click Ediciones",
 		"Titulo": "El club de los aventureros y los hombres de plata",
-		"Género": "Infantil",
-		"Autor" : "Enrique Gómez Medina"
+		"Genero": "Infantil",
+		"Autor" : "Enrique Gómez Medina",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Click Ediciones",
 		"Titulo": "Todo de mí",
-		"Género": "Novela Romántica",
-		"Autor" : "Moruena Estríngana"
+		"Genero": "Novela Romántica",
+		"Autor" : "Moruena Estríngana",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Click Ediciones",
 		"Titulo": "La marquesa de Connemara",
-		"Género": "Novela Romántica",
-		"Autor" : "J. F. Morgan"
+		"Genero": "Novela Romántica",
+		"Autor" : "J. F. Morgan",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Click Ediciones",
 		"Titulo": "La leyenda de la mariposa azul",
-		"Género": "Novela Romántica",
-		"Autor" : "Calista Sweet"
+		"Genero": "Novela Romántica",
+		"Autor" : "Calista Sweet",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Click Ediciones",
 		"Titulo": "La España fabulosa",
-		"Género": "Viajes",
-		"Autor" : "Jesus Callejo"
+		"Genero": "Viajes",
+		"Autor" : "Jesus Callejo",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 
 	{
 		"Editorial": "Click Ediciones",
 		"Titulo": "Tex Kerba",
-		"Género": "Viajes",
-		"Autor" : "Miguel Angel Francisco"
+		"Genero": "Viajes",
+		"Autor" : "Miguel Angel Francisco",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Click Ediciones",
 		"Titulo": "Cerebro y Ordenador",
-		"Género": "Ciencia",
-		"Autor" : "Antonio Orbe"
+		"Genero": "Ciencia",
+		"Autor" : "Antonio Orbe",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Espasa",
 		"Titulo": "Entre lobos y autómatas",
-		"Género": "Filosofía",
-		"Autor" : "Antonio Orbe"
+		"Genero": "Filosofía",
+		"Autor" : "Antonio Orbe",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Espasa",
 		"Titulo": "La Rebelión de las masas",
-		"Género": "Filosofía",
-		"Autor" : "José Ortega y Gasset"
+		"Genero": "Filosofía",
+		"Autor" : "José Ortega y Gasset",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Espasa",
 		"Titulo": "HItos del sentido",
-		"Género": "Filosofía",
-		"Autor" : "Antonio Escohotado"
+		"Genero": "Filosofía",
+		"Autor" : "Antonio Escohotado",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Espasa",
 		"Titulo": "Emocionarte. La doble vida de los cuadros",
-		"Género": "Ciencias Humanas y sociales",
-		"Autor" : "Carlos del Amor"
+		"Genero": "Ciencias Humanas y sociales",
+		"Autor" : "Carlos del Amor",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Espasa",
 		"Titulo": "Un ciudadano libre",
-		"Género": "Ciencias Humanas y sociales",
-		"Autor" : "Albert Rivera"
+		"Genero": "Ciencias Humanas y sociales",
+		"Autor" : "Albert Rivera",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Espasa",
 		"Titulo": "La guerra mas larga de la Historia",
-		"Género": "Ciencias Humanas y sociales",
-		"Autor" : "Lola Venegags, Isabe M. Reverte y Margo Venegas"
+		"Genero": "Ciencias Humanas y sociales",
+		"Autor" : "Lola Venegags, Isabe M. Reverte y Margo Venegas",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Espasa",
 		"Titulo": "Despleagando velas",
-		"Género": "Ciencias Humanas y sociales",
-		"Autor" : "Cristina Villanueva"
+		"Genero": "Ciencias Humanas y sociales",
+		"Autor" : "Cristina Villanueva",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Espasa",
 		"Titulo": "Déjame entrar",
-		"Género": "Terror",
-		"Autor" : "John Ajvide LIndqvist"
+		"Genero": "Terror",
+		"Autor" : "John Ajvide LIndqvist",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Espasa",
 		"Titulo": "La Zona",
-		"Género": "Terror",
-		"Autor" : "Juan Miguel Aguilera"
+		"Genero": "Terror",
+		"Autor" : "Juan Miguel Aguilera",
+        "Activo": 1,
+		"Cantidad" : 25
 	},
 	{
 		"Editorial": "Espasa",
 		"Titulo": "Hay alguien ahí",
-		"Género": "Terror",
-		"Autor" : "Jorge Magano"
+		"Genero": "Terror",
+		"Autor" : "Jorge Magano",
+        "Activo": 1,
+		"Cantidad" : 25
 	}
 ]

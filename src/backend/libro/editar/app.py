@@ -1,7 +1,9 @@
 from flask import Flask, request
 import os
-import pymongo
 import json
+import pymongo
+from bson.objectid import ObjectId
+from bson.json_util import dumps
 
 app = Flask(__name__)
 
@@ -20,19 +22,60 @@ def main():
     return "<p>libro_editar</p>"
 
 
-@app.route('/', methods=['PUT'])
+@app.route('/libros/editar', methods=['PUT'])
 def actualizar():
     if request.method == 'PUT':
         content = request.get_json()
+        cant = 0
         resultado = col.update_many(
             {
-                "_id": content['id']
+                "_id": ObjectId(content["id"])
             },
             {
                 '$set': {
-                    "Titulo": content["Titulo"]
+                    "Titulo": content["Titulo"],
+                    "Autor": content["Autor"],
+                    "Editorial": content["Editorial"],
+                    "Genero": content["Genero"],
+                    "Cantidad": content["Cantidad"],
+                    "Activo": content["Activo"]
                 }
             })
         cant = cant + resultado.modified_count
 
-        return {"modificado": str(cant)}
+        return {"modificado": cant}
+
+
+@app.route('/libros/stock', methods=['PUT'])
+def descontarQuantity():
+    if request.method == 'PUT':
+        content = request.get_json()
+        cantidadStock = 0
+        cant = 0
+
+        libro = col.find_one({'_id': ObjectId(content["id"])})
+
+        if libro:
+
+            cantidadStock = int(str(libro["Cantidad"]))
+
+            if cantidadStock > 0:
+                cantidadStock = cantidadStock - 1
+
+                resultado = col.update_one(
+                    {
+                        "_id": ObjectId(content["id"])
+                    },
+                    {
+                        '$set': {
+                            "Cantidad":cantidadStock
+                        }
+                    })
+                cant = cant + resultado.modified_count
+
+                return {"modificado": cant, "nueva Cantidad": cantidadStock}
+            else:
+                return {"modificado": cant, "nueva Cantidad": cantidadStock}
+
+        else:
+            return {"mensaje": "Libro no existe"}

@@ -20,14 +20,15 @@ def main():
     return "<p>libro_crear</p>"
 
 
-@app.route('/', methods=['POST'])
+@app.route('/libros/crear', methods=['POST'])
 def save():
     if request.method == 'POST':
         content = request.get_json()
-        busqueda = col.find_one({'Titulo': content['Titulo'], 'Editorial': content['Editorial'], 'Autor':content['Autor'], 'Genero': content['Genero']})
+        busqueda = col.find_one(
+            {'Titulo': content['Titulo'], 'Editorial': content['Editorial'], 'Autor': content['Autor'], 'Genero': content['Genero']})
 
         if busqueda:
             return {"mensaje": "ya existe"}
         else:
             ret = col.insert_one(content)
-            return {"mensaje":"insertado", "id":str(ret.inserted_id)}
+            return {"mensaje": "insertado", "id": str(ret.inserted_id)}

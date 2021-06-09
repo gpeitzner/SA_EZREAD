@@ -17,7 +17,7 @@ db = client[str(db_name)]
 col = db["libros"]
 
 
-@app.route("/")
+@app.route("/libros")  # obbtener todos los libros registrados.
 def main():
     if request.method == 'GET':
         busqueda = col.find()
@@ -25,15 +25,18 @@ def main():
         if busqueda:
             libros = []
             for libro in busqueda:
-                libros.append({"id": str(libro['_id']), "Titulo": str(libro['Titulo']), "Editorial": str(
-                    libro['Editorial']), "Autor": str(libro['Autor']), "Genero": str(libro['Genero'])})
+
+                if (libro['Activo']):
+                    libros.append({"id": str(libro['_id']), "Titulo": str(libro['Titulo']), "Editorial": str(
+                        libro['Editorial']), "Autor": str(libro['Autor']), "Genero": str(libro['Genero']),
+                        "Cantidad": libro['Cantidad'], "Activo": libro['Activo']})
 
             return {'libros': libros}
         else:
             return {"libros": []}
 
 
-@app.route('/libro', methods=['GET'])  # por medio de titulo
+@app.route('/libro', methods=['GET'])  # por medio de id
 def obtenerLibro():
     if request.method == 'GET':
         content = request.args.get('id')
@@ -41,14 +44,20 @@ def obtenerLibro():
 
         if libro:
 
-            return {'libro': {"id": str(libro['_id']), "Titulo": str(libro['Titulo']), "Editorial": str(
-                    libro['Editorial']), "Autor": str(libro['Autor']), "Genero": str(libro['Genero'])}}
+            if (libro['Activo']):
+                return {'libro': {"id": str(libro['_id']), "Titulo": str(libro['Titulo']), "Editorial": str(
+                        libro['Editorial']), "Autor": str(libro['Autor']), "Genero": str(libro['Genero']),
+                    "Cantidad": libro['Cantidad'], "Activo": libro['Activo']}}
+            else:
+                return {"mensaje": "Libro fuera de stock"}
+
         else:
             return {"mensaje": "Libro no existe"}
 
 
-@app.route('/Genero', methods=['GET'])  # por medio de titulo
-def obtenerByGenders():
+# traer todos los generos con sus libros
+@app.route('/libros/Generos', methods=['GET'])
+def obtenerGeneros():
     if request.method == 'GET':
         ret = col.aggregate([
             {'$group': {
@@ -59,7 +68,9 @@ def obtenerByGenders():
                                 'Editorial': "$Editorial",
                                 'Titulo': "$Titulo",
                                 'Genero': "$Genero",
-                                'Autor': "$Autor"
+                                'Autor': "$Autor",
+                                'Cantidad': "$Cantidad",
+                                'Activo': "$Activo"
                             },
                             }
             }
@@ -73,10 +84,75 @@ def obtenerByGenders():
             for genero in l:
                 books = []
                 for libro in genero['libros']:
-                    books.append({"id": str(libro['id']), "Titulo": str(libro['Titulo']), "Editorial": str(
-                        libro['Editorial']), "Autor": str(libro['Autor'])})
+                    if (libro['Activo']):
+                        books.append({"id": str(libro['id']), "Titulo": str(libro['Titulo']), "Editorial": str(
+                            libro['Editorial']), "Autor": str(libro['Autor']),
+                            "Cantidad": libro['Cantidad'], "Activo": libro['Activo']})
 
                 list2.append({'Genero': genero['_id'], 'libros': books})
             return {'Generos': list2}
         else:
             return {'Generos': []}
+
+
+# traer todos las editoriales con sus libros
+@app.route('/libros/Editoriales', methods=['GET'])
+def obtenerEditoriales():
+    if request.method == 'GET':
+        ret = col.aggregate([
+            {'$group': {
+                '_id': "$Editorial",
+                'libros': {'$push':
+                            {
+                                'id': '$_id',
+                                'Editorial': "$Editorial",
+                                'Titulo': "$Titulo",
+                                'Genero': "$Genero",
+                                'Autor': "$Autor",
+                                'Cantidad': "$Cantidad",
+                                'Activo': "$Activo"
+                            },
+                            }
+            }
+            }
+        ])
+        if ret:
+
+            l = list(ret)
+            list2 = []
+            for editorial in l:
+                books = []
+                for libro in editorial['libros']:
+                    if (libro['Activo']):
+                        books.append({"id": str(libro['id']), "Titulo": str(libro['Titulo']), "Genero": str(
+                            libro['Genero']), "Autor": str(libro['Autor']),
+                            "Cantidad": libro['Cantidad'],  "Activo": libro['Activo']})
+
+                list2.append({'Editorial': editorial['_id'], 'libros': books})
+            return {'Editoriales': list2}
+        else:
+            return {'Editoriales': []}
+
+
+# obtener libros de una editorial en específico
+@app.route('/libros/byEditorial', methods=['GET'])
+def obtenerbyEditorial():
+    if request.method == 'GET':
+        editorial = request.args.get('user')
+        ret = col.aggregate([
+            {
+                '$match': {'Editorial': editorial}
+            }
+        ])
+
+        if ret:
+            l = list(ret)
+            books = []
+            for libro in l:
+                if (libro['Activo']):
+                    books.append({"id": str(libro['_id']), "Titulo": str(libro['Titulo']), "Genero": str(
+                        libro['Genero']), "Autor": str(libro['Autor']),
+                        "Cantidad": libro['Cantidad'], "Activo": libro['Activo']})
+            return {'libros': books}
+        else:
+            return {'libros': []}
