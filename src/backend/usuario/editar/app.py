@@ -1,4 +1,5 @@
-from flask import Flask
+from flask import Flask, redirect, url_for, render_template, request
+from bson.objectid import ObjectId
 import os
 import pymongo
 
@@ -13,7 +14,57 @@ client = pymongo.MongoClient(db_host, db_port)
 db = client[str(db_name)]
 col = db["usuarios"]
 
+class Usuario:
+    def __init__(self,nombre,apellido,correo,password,telefono,direccion):
+        self.nombre = nombre
+        self.apellido = apellido
+        self.correo = correo
+        self.password = password
+        self.telefono = telefono
+        self.direccion = direccion
+    
+    def toJson(self):
+        return {
+            "nombre":self.nombre,
+            "apellido":self.apellido,
+            "correo": self.correo,
+            "password":self.password,
+            "telefono":self.telefono,
+            "direccion":self.direccion,
+        }
+    def toJsonWithoutPass(self):
+        return {
+            "nombre":self.nombre,
+            "apellido":self.apellido,
+            "correo": self.correo,
+            "telefono":self.telefono,
+            "direccion":self.direccion,
+        }
+
+@app.route("/users", methods=["POST"])
+def edit():
+    id = request.form["id"]
+    nombre = request.form["nombre"]
+    apellido = request.form.get("apellido","")
+    correo = request.form["correo"]
+    password = request.form.get("password","")
+    telefono = request.form.get("telefono","")
+    direccion = request.form.get("direccion","")
+    new_user = Usuario(nombre,apellido,correo,password,telefono,direccion)
+    
+    Qid = ObjectId(id)
+    myquery = { "_id": Qid }
+    if password == "":
+        newvalues = { "$set": new_user.toJson() }    
+    else:
+        newvalues = { "$set": new_user.toJsonWithoutPass() }
+    
+    col.update_one(myquery,newvalues)
+    return {"mensaje":"Modificado"}
 
 @app.route("/")
 def main():
-    return "<p>usuario_editar</p>"
+    return "<p>EDITAR USUARIO</p>"
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0",debug=True,port=5003)  

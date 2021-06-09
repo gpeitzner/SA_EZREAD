@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for, render_template, request
+from flask import Flask, request
 import os
 import pymongo
 
@@ -36,8 +36,8 @@ class Usuario:
             "activo":self.activo
         }
 
-@app.route("/create", methods=["POST"])
-def login():
+@app.route("/users", methods=["POST"])
+def create():
     tipo = request.form.get("tipo","cliente")
     nombre = request.form["nombre"]
     apellido = request.form.get("apellido","")
@@ -45,19 +45,22 @@ def login():
     password = request.form["password"]
     telefono = request.form.get("telefono","")
     direccion = request.form.get("direccion","")
-    if tipo=="cliente":
-        new_user = Usuario(tipo,nombre,apellido,correo,password,telefono,direccion,1)
-    elif tipo=="administrador":
-        new_user = Usuario(tipo,nombre,apellido,correo,password,telefono,direccion,1)
+    existe = col.find_one({'correo': correo})
+    if existe:
+        return {"mensaje":"Correo ya existente"}
     else:
-        new_user = Usuario(tipo,nombre,apellido,correo,password,telefono,direccion,0)
-    print(new_user.toJson())
-    col.insert_one(new_user.toJson())
-    return "Ok"
+        if tipo=="cliente":
+            new_user = Usuario(tipo,nombre,apellido,correo,password,telefono,direccion,1)
+        elif tipo=="administrador":
+            new_user = Usuario(tipo,nombre,apellido,correo,password,telefono,direccion,1)
+        else:
+            new_user = Usuario(tipo,nombre,apellido,correo,password,telefono,direccion,0)
+        ret = col.insert_one(new_user.toJson())
+        return {"mensaje":"Usuario Insertado","id":str(ret.inserted_id)}
 
 @app.route("/")
 def main():
-    return "<p>usuario_crear</p>"
+    return "<p>CREAR USUARIO</p>"
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0",debug=True)
+    app.run(host="0.0.0.0",debug=True,port=5002)
