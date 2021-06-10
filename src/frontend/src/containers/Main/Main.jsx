@@ -23,6 +23,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import BookIcon from '@material-ui/icons/Book';
 import PeopleIcon from '@material-ui/icons/People';
+import Users from '../Users'
 
 
 const drawerWidth = 240;
@@ -189,7 +190,7 @@ const Main = () => {
         <Container maxWidth="lg" className={classes.container}>
         <Switch>
           <Route path="/users">
-            <div>books</div>
+            <Users />
           </Route>
           <Route path="/add-book">
             <div>add-book</div>
