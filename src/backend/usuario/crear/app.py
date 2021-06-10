@@ -1,6 +1,7 @@
 from flask import Flask, request
 import os
 import pymongo
+import hashlib
 
 app = Flask(__name__)
 
@@ -36,6 +37,11 @@ class Usuario:
             "activo":self.activo
         }
 
+def encrypt_string(hash_string):
+    sha_signature = \
+        hashlib.sha256(hash_string.encode()).hexdigest()
+    return sha_signature
+
 @app.route("/users", methods=["POST"])
 def create():
     tipo = request.form.get("tipo","cliente")
@@ -46,15 +52,17 @@ def create():
     telefono = request.form.get("telefono","")
     direccion = request.form.get("direccion","")
     existe = col.find_one({'correo': correo})
+    sha_signature = encrypt_string(password)
+    print(sha_signature)
     if existe:
         return {"mensaje":"Correo ya existente"}
     else:
         if tipo=="cliente":
-            new_user = Usuario(tipo,nombre,apellido,correo,password,telefono,direccion,1)
+            new_user = Usuario(tipo,nombre,apellido,correo,sha_signature,telefono,direccion,1)
         elif tipo=="administrador":
-            new_user = Usuario(tipo,nombre,apellido,correo,password,telefono,direccion,1)
+            new_user = Usuario(tipo,nombre,apellido,correo,sha_signature,telefono,direccion,1)
         else:
-            new_user = Usuario(tipo,nombre,apellido,correo,password,telefono,direccion,0)
+            new_user = Usuario(tipo,nombre,apellido,correo,sha_signature,telefono,direccion,0)
         ret = col.insert_one(new_user.toJson())
         return {"mensaje":"Usuario Insertado","id":str(ret.inserted_id)}
 
