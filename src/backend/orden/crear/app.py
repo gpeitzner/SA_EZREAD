@@ -2,7 +2,7 @@ from flask import Flask, request
 from bson.objectid import ObjectId
 import os
 import pymongo
-
+#CREAR
 app = Flask(__name__)
 
 db_host = os.environ["db_host"] if "db_host" in os.environ else "localhost"
