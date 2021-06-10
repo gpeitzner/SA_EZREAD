@@ -14,16 +14,15 @@ client = pymongo.MongoClient(db_host, db_port)
 db = client[str(db_name)]
 col = db["usuarios"]
 
+
 @app.route("/users/<string:id>", methods=["DELETE"])
 def remove(id):
     Qid = ObjectId(id)
-    myquery = { "_id": Qid }
+    myquery = {"_id": Qid}
     col.delete_one(myquery)
-    return {"mensaje":"Eliminado"}
+    return {"mensaje": "Eliminado"}
+
 
 @app.route("/")
 def main():
     return "<p>ELIMINAR USUARIO</p>"
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0",debug=True,port=5004)  
