@@ -5,7 +5,6 @@ pipeline {
         stage('Unit Testing') {
             steps {
                 sh 'python3 ./src/backend/autenticacion/login/test.py'
-                sh 'python3 ./src/backend/autenticacion/registro/test.py'
                 sh 'python3 ./src/backend/usuario/crear/test.py'
                 sh 'python3 ./src/backend/usuario/editar/test.py'
                 sh 'python3 ./src/backend/usuario/eliminar/test.py'
