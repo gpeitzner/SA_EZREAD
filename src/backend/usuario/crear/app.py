@@ -1,6 +1,7 @@
 from flask import Flask, request
 import os
 import pymongo
+import hashlib
 
 app = Flask(__name__)
 
@@ -8,13 +9,16 @@ db_host = os.environ["db_host"] if "db_host" in os.environ else "localhost"
 db_password = os.environ["db_password"] if "db_password" in os.environ else ""
 db_port = int(os.environ["db_port"]) if "db_port" in os.environ else 27017
 db_name = os.environ["db_name"] if "db_name" in os.environ else "ezread"
+db_user = os.environ["db_user"] if "db_user" in os.environ else ""
 
-client = pymongo.MongoClient(db_host, db_port)
+client = pymongo.MongoClient(
+    host=db_host, port=db_port, username=db_user, password=db_password)
 db = client[str(db_name)]
 col = db["usuarios"]
 
+
 class Usuario:
-    def __init__(self, tipo,nombre,apellido,correo,password,telefono,direccion,activo):
+    def __init__(self, tipo, nombre, apellido, correo, password, telefono, direccion, activo):
         self.tipo = tipo
         self.nombre = nombre
         self.apellido = apellido
@@ -23,44 +27,54 @@ class Usuario:
         self.telefono = telefono
         self.direccion = direccion
         self.activo = activo
-    
+
     def toJson(self):
         return {
-            "tipo":self.tipo,
-            "nombre":self.nombre,
-            "apellido":self.apellido,
+            "tipo": self.tipo,
+            "nombre": self.nombre,
+            "apellido": self.apellido,
             "correo": self.correo,
-            "password":self.password,
-            "telefono":self.telefono,
-            "direccion":self.direccion,
-            "activo":self.activo
+            "password": self.password,
+            "telefono": self.telefono,
+            "direccion": self.direccion,
+            "activo": self.activo
         }
+
+
+def encrypt_string(hash_string):
+    sha_signature = \
+        hashlib.sha256(hash_string.encode()).hexdigest()
+    return sha_signature
+
 
 @app.route("/users", methods=["POST"])
 def create():
-    tipo = request.form.get("tipo","cliente")
+    tipo = request.form.get("tipo", "cliente")
     nombre = request.form["nombre"]
-    apellido = request.form.get("apellido","")
+    apellido = request.form.get("apellido", "")
     correo = request.form["correo"]
     password = request.form["password"]
-    telefono = request.form.get("telefono","")
-    direccion = request.form.get("direccion","")
+    telefono = request.form.get("telefono", "")
+    direccion = request.form.get("direccion", "")
     existe = col.find_one({'correo': correo})
+    sha_signature = encrypt_string(password)
+    print(sha_signature)
     if existe:
-        return {"mensaje":"Correo ya existente"}
+        return {"mensaje": "Correo ya existente"}
     else:
-        if tipo=="cliente":
-            new_user = Usuario(tipo,nombre,apellido,correo,password,telefono,direccion,1)
-        elif tipo=="administrador":
-            new_user = Usuario(tipo,nombre,apellido,correo,password,telefono,direccion,1)
+        if tipo == "cliente":
+            new_user = Usuario(tipo, nombre, apellido, correo,
+                               sha_signature, telefono, direccion, 1)
+        elif tipo == "administrador":
+            new_user = Usuario(tipo, nombre, apellido, correo,
+                               sha_signature, telefono, direccion, 1)
         else:
-            new_user = Usuario(tipo,nombre,apellido,correo,password,telefono,direccion,0)
+            new_user = Usuario(tipo, nombre, apellido, correo,
+                               sha_signature, telefono, direccion, 0)
         ret = col.insert_one(new_user.toJson())
-        return {"mensaje":"Usuario Insertado","id":str(ret.inserted_id)}
+        return {"mensaje": "Usuario Insertado", "id": str(ret.inserted_id)}
+
 
 @app.route("/")
 def main():
     return "<p>CREAR USUARIO</p>"
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0",debug=True,port=5002)
