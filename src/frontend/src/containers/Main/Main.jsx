@@ -24,6 +24,8 @@ import AddBoxIcon from '@material-ui/icons/AddBox';
 import BookIcon from '@material-ui/icons/Book';
 import PeopleIcon from '@material-ui/icons/People';
 import Users from '../Users'
+import Books from '../Books'
+import AddBook from '../../components/AddBook'
 
 
 const drawerWidth = 240;
@@ -193,10 +195,10 @@ const Main = () => {
             <Users />
           </Route>
           <Route path="/add-book">
-            <div>add-book</div>
+            <AddBook />
           </Route>
           <Route path="/">
-            <div>:)</div>
+            <Books />
           </Route>
         </Switch>
         </Container>
