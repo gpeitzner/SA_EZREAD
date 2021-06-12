@@ -44,10 +44,10 @@ const emptyBook = {
     // "Image":"https://enlinea.santotomas.cl/wp-content/uploads/sites/2/2020/10/Perros-mestizos.jpg"
 }
 
-const CREATE_URL = 'http://localhost:5006/libros/crear'
-const GET_URL = 'http://localhost:5009/libro'
-const EDIT_URL = 'http://localhost:5003/libros/editar'
-const DELETE_URL = 'http://localhost:5003/libros/eliminar'
+const CREATE_URL = process.env.REACT_APP_BOOK_CREATE_URL
+const GET_URL = process.env.REACT_APP_BOOK_GET_URL
+const EDIT_URL = process.env.REACT_APP_BOOK_EDIT_URL
+const DELETE_URL =  process.env.REACT_APP_BOOK_DELETE_URL
 
 const AddBook = () => {
     const classes = useStyles()

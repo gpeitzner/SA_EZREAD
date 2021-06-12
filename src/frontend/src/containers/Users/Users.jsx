@@ -27,9 +27,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const GET_URL = 'http://localhost:5005/users'
-const UPDATE_URL = 'http://localhost:5003/users'
-const DELETE_URL = 'http://localhost:5004/users'
+const GET_URL = process.env.REACT_APP_USER_GET_ALL_URL
+const UPDATE_URL = process.env.REACT_APP_USER_UPDATE_URL
+const DELETE_URL = process.env.REACT_APP_USER_DELETE_URL
 
 const Users = () => {
     const classes = useStyles()

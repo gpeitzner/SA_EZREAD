@@ -148,7 +148,7 @@ const UserForm = () => {
     )
 }
 
-const CREATE_URL = 'http://localhost:5002/users'
+const CREATE_URL = process.env.REACT_APP_USER_CREATE_URL
 
 const PublisherForm = () => {
     const classes = useStyles();

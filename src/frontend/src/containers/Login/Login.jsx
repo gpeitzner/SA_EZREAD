@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-const CREATE_URL = 'http://localhost:5000/'
+const CREATE_URL = process.env.REACT_APP_LOGIN_URL
 
 const Login = () =>  {
     const classes = useStyles();

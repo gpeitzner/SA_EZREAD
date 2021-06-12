@@ -119,7 +119,7 @@ const Book = ({book}) => {
     )
 }
 
-const GET_URL = 'http://localhost:5009/libros'
+const GET_URL = process.env.REACT_APP_BOOK_GET_ALL_URL
 
 
 const Books = () => {
