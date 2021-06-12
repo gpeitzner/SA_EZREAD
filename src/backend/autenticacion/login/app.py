@@ -29,8 +29,7 @@ def main():
         'correo': email,
         'password': hashlib.sha256(password.encode()).hexdigest()
     })
-    print(user)
-    if user:
+    if user and int(user["activo"]) == 1:
         user_data = {
             "_id": str(user["_id"]),
             "tipo": user["tipo"],
