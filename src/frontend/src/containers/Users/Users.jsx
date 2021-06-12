@@ -56,7 +56,7 @@ const Users = () => {
         try {
             const values = {...user}
             values.activo = 1
-            const { status, data } = await axios.put(UPDATE_URL, values)
+            const { status, data } = await axios.post(UPDATE_URL, values)
             if (status === 200) {
                 const tempUsers = users.map(u => {
                     if(u.id === values.id)
@@ -104,7 +104,7 @@ const Users = () => {
                         </CardContent>
                         <div className={classes.controls}>
                             {
-                                user.activo !== 1 && (
+                                user.activo === "0" && (
                                     <IconButton onClick={() => acceptUser(user)} aria-label="aceptar">
                                         <GroupAddIcon />
                                     </IconButton>
