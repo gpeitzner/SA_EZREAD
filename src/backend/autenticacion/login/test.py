@@ -13,7 +13,7 @@ def find_one_mock(_):
         "direccion": "15 Calle C 15-27 Zona 11 de Mixco",
         "nombre": "Guillermo",
         "telefono": "50235240107",
-        "tipo": "administrador"
+        "tipo": "administrador",
     }
 
 
