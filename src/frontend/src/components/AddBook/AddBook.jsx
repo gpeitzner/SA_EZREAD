@@ -1,7 +1,8 @@
 import { Container, FormGroup, TextField, Typography, Button, makeStyles } from '@material-ui/core'
 import * as React from 'react'
 import { useFormik } from 'formik';
-import { findByLabelText } from '@testing-library/dom';
+import axios from 'axios'
+import { useParams } from 'react-router-dom'
 
 const book = 
 {
@@ -33,27 +34,84 @@ const book =
          }
      }))
 
+const emptyBook = {
+    "Editorial": "",
+     "Titulo": "",
+     "Genero": "",
+     "Autor" : "",
+     "Activo": 1,
+     "Cantidad" : 0,
+    // "Image":"https://enlinea.santotomas.cl/wp-content/uploads/sites/2/2020/10/Perros-mestizos.jpg"
+}
+
+const CREATE_URL = 'http://localhost:5006/libros/crear'
+const GET_URL = 'http://localhost:5009/libro'
+const EDIT_URL = 'http://localhost:5003/libros/editar'
+const DELETE_URL = 'http://localhost:5003/libros/eliminar'
+
 const AddBook = () => {
     const classes = useStyles()
+    const { bookId } = useParams()
+    
+
+    React.useEffect(() => {
+        const getAsync = async () => {
+            if(bookId) {
+                const { status, data } = await axios.get(`${GET_URL}?id=${bookId}`)
+                if (status === 200) {
+                    alert(data.mensaje)
+                } else {
+                    alert(data.message)
+                }
+            }
+        }
+        getAsync()
+    }, [bookId])
+
+
+    const deleteAction = async () => {
+        const { status, data } = await axios.delete(`${DELETE_URL}?=id${bookId}`)
+        if (status === 200) {
+            alert(data.mensaje)
+        } else {
+            alert(data.message)
+        }
+    }
 
     const formik = useFormik({
-        initialValues: book,
-        onSubmit: (values) => {
-          alert(JSON.stringify(values, null, 2));
+        initialValues: emptyBook,
+        onSubmit: async (values, setSubmitting) => {
+            if(bookId) {
+                const { status, data } = await axios.put(`${EDIT_URL}`, values)
+                if (status === 200) {
+                    alert(data.mensaje)
+                } else {
+                  alert(data.message)
+                }
+                setSubmitting(false)
+            } else {
+                const { status, data } = await axios.post(CREATE_URL, values)
+                if (status === 200) {
+                    alert(data.mensaje)
+                } else {
+                alert(data.message)
+                }
+                setSubmitting(false)
+            }
+  
         },
       });
-
 
 
     return(
         <Container maxWidth="sm">
             <Typography component="h1" variant="h4">
-                Crear libro
+                Libro
             </Typography>
             <Typography component="p" variant="subtitle1">
                 Ingresa los datos de libro
             </Typography>
-            <FormGroup className={classes.form}>
+            <form className={classes.form} onSubmit={formik.handleSubmit}>
                 <TextField
                 fullWidth
                 id="Titulo"
@@ -125,13 +183,13 @@ const AddBook = () => {
                 />
                 <div className={classes.buttoContainer}>
                     <Button color="primary" variant="contained" fullWidth type="submit">
-                    Crear
+                    { bookId ? 'Actualizar' : 'Crear'}
                     </Button>
-                    <Button color="primary" variant="contained" fullWidth type="submit">
+                    <Button color="primary" variant="contained" fullWidth type="button" onClick={deleteAction}>
                     Eliminar
                     </Button>
                 </div>
-            </FormGroup>
+            </form>
         </Container>
     )
 }

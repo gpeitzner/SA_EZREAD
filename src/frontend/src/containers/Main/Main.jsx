@@ -2,7 +2,8 @@ import * as React from 'react'
 import {
     Switch,
     Route,
-    Link
+    Link,
+    useHistory
   } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
@@ -26,6 +27,9 @@ import PeopleIcon from '@material-ui/icons/People';
 import Users from '../Users'
 import Books from '../Books'
 import AddBook from '../../components/AddBook'
+import { useRecoilValue } from 'recoil';
+import { cartStatsState } from '../../recoil/selectors';
+import Cart from '../Cart/Cart';
 
 
 const drawerWidth = 240;
@@ -104,6 +108,8 @@ const useStyles = makeStyles((theme) => ({
 const Main = () => {
     const classes = useStyles()
     const [open, setOpen] = React.useState(false);
+    const {totalElements} = useRecoilValue(cartStatsState)
+    const history = useHistory()
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -112,6 +118,10 @@ const Main = () => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const goToCart = () => {
+    history.push('/cart')
+  }
 
     return ( <div className={classes.root}>
         <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
@@ -128,8 +138,8 @@ const Main = () => {
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             EZRead
           </Typography>
-          <IconButton color="inherit">
-            <Badge badgeContent={0} color="secondary">
+          <IconButton color="inherit" onClick={goToCart}>
+            <Badge badgeContent={totalElements} color="secondary">
               <ShoppingBasketIcon />
             </Badge>
           </IconButton>
@@ -196,6 +206,12 @@ const Main = () => {
           </Route>
           <Route path="/add-book">
             <AddBook />
+          </Route>
+          <Route path="/books/:bookId/edit">
+            <AddBook />
+          </Route>
+          <Route path="/cart">
+            <Cart />
           </Route>
           <Route path="/">
             <Books />
