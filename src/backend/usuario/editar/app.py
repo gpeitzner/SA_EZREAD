@@ -20,13 +20,14 @@ col = db["usuarios"]
 
 
 class Usuario:
-    def __init__(self, nombre, apellido, correo, password, telefono, direccion):
+    def __init__(self, nombre, apellido, correo, password, telefono, direccion,activo):
         self.nombre = nombre
         self.apellido = apellido
         self.correo = correo
         self.password = password
         self.telefono = telefono
         self.direccion = direccion
+        self.activo = activo
 
     def toJson(self):
         return {
@@ -36,6 +37,7 @@ class Usuario:
             "password": self.password,
             "telefono": self.telefono,
             "direccion": self.direccion,
+            "activo": self.activo
         }
 
     def toJsonWithoutPass(self):
@@ -45,6 +47,7 @@ class Usuario:
             "correo": self.correo,
             "telefono": self.telefono,
             "direccion": self.direccion,
+            "activo": self.activo
         }
 
 
@@ -58,7 +61,8 @@ def edit():
     password = data.get("password", "")
     telefono = data.get("telefono", "")
     direccion = data.get("direccion", "")
-    new_user = Usuario(nombre, apellido, correo, password, telefono, direccion)
+    activo = data.get("activo","1")
+    new_user = Usuario(nombre, apellido, correo, password, telefono, direccion,activo)
 
     Qid = ObjectId(id)
     myquery = {"_id": Qid}
