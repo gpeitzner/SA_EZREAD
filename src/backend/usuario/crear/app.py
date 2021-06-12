@@ -2,15 +2,19 @@ from flask import Flask, request
 import os
 import pymongo
 import hashlib
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 db_host = os.environ["db_host"] if "db_host" in os.environ else "localhost"
 db_password = os.environ["db_password"] if "db_password" in os.environ else ""
 db_port = int(os.environ["db_port"]) if "db_port" in os.environ else 27017
 db_name = os.environ["db_name"] if "db_name" in os.environ else "ezread"
+db_user = os.environ["db_user"] if "db_user" in os.environ else ""
 
-client = pymongo.MongoClient(db_host, db_port)
+client = pymongo.MongoClient(
+    host=db_host, port=db_port, username=db_user, password=db_password)
 db = client[str(db_name)]
 col = db["usuarios"]
 
@@ -47,13 +51,14 @@ def encrypt_string(hash_string):
 
 @app.route("/users", methods=["POST"])
 def create():
-    tipo = request.form.get("tipo", "cliente")
-    nombre = request.form["nombre"]
-    apellido = request.form.get("apellido", "")
-    correo = request.form["correo"]
-    password = request.form["password"]
-    telefono = request.form.get("telefono", "")
-    direccion = request.form.get("direccion", "")
+    data = request.get_json()
+    tipo = data.get("tipo", "cliente")
+    nombre = data["nombre"]
+    apellido = data.get("apellido", "")
+    correo = data["correo"]
+    password = data["password"]
+    telefono = data.get("telefono", "")
+    direccion = data.get("direccion", "")
     existe = col.find_one({'correo': correo})
     sha_signature = encrypt_string(password)
     print(sha_signature)
