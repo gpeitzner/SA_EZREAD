@@ -24,7 +24,7 @@ services:
     ports:
       - 5002:5002
   usuario_editar:
-    image: ezread_usuario_eliminar:latest
+    image: ezread_usuario_editar:latest
     restart: always
     env_file:
       - ./.env-dev
