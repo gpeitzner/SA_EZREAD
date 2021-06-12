@@ -2,8 +2,10 @@ from flask import Flask, request
 import os
 import pymongo
 import hashlib
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 db_host = os.environ["db_host"] if "db_host" in os.environ else "localhost"
 db_password = os.environ["db_password"] if "db_password" in os.environ else ""
@@ -49,13 +51,14 @@ def encrypt_string(hash_string):
 
 @app.route("/users", methods=["POST"])
 def create():
-    tipo = request.form.get("tipo", "cliente")
-    nombre = request.form["nombre"]
-    apellido = request.form.get("apellido", "")
-    correo = request.form["correo"]
-    password = request.form["password"]
-    telefono = request.form.get("telefono", "")
-    direccion = request.form.get("direccion", "")
+    data = request.get_json()
+    tipo = data.get("tipo", "cliente")
+    nombre = data["nombre"]
+    apellido = data.get("apellido", "")
+    correo = data["correo"]
+    password = data["password"]
+    telefono = data.get("telefono", "")
+    direccion = data.get("direccion", "")
     existe = col.find_one({'correo': correo})
     sha_signature = encrypt_string(password)
     print(sha_signature)

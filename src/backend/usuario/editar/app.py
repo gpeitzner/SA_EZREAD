@@ -2,8 +2,10 @@ from flask import Flask, redirect, url_for, render_template, request
 from bson.objectid import ObjectId
 import os
 import pymongo
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 db_host = os.environ["db_host"] if "db_host" in os.environ else "localhost"
 db_password = os.environ["db_password"] if "db_password" in os.environ else ""
@@ -48,13 +50,14 @@ class Usuario:
 
 @app.route("/users", methods=["POST"])
 def edit():
-    id = request.form["id"]
-    nombre = request.form["nombre"]
-    apellido = request.form.get("apellido", "")
-    correo = request.form["correo"]
-    password = request.form.get("password", "")
-    telefono = request.form.get("telefono", "")
-    direccion = request.form.get("direccion", "")
+    data = request.get_json()
+    id = data["id"]
+    nombre = data["nombre"]
+    apellido = data.get("apellido", "")
+    correo = data["correo"]
+    password = data.get("password", "")
+    telefono = data.get("telefono", "")
+    direccion = data.get("direccion", "")
     new_user = Usuario(nombre, apellido, correo, password, telefono, direccion)
 
     Qid = ObjectId(id)
