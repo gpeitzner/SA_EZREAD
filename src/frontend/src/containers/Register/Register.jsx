@@ -11,6 +11,8 @@ import Radio  from '@material-ui/core/Radio';
 import FormControlLabel  from '@material-ui/core/FormControlLabel';
 import FormLabel  from '@material-ui/core/FormLabel';
 import { makeStyles } from '@material-ui/core/styles';
+import { useFormik } from 'formik';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -37,50 +39,86 @@ const useStyles = makeStyles((theme) => ({
 
 const UserForm = () => {
     const classes = useStyles();
+    const formik = useFormik({
+      initialValues: {
+        tipo: 'usuario',
+        nombre: '',
+        apellido: '',
+        correo: '',
+        password: '',
+        telefono: '',
+        direccion: ''
+
+      },
+      onSubmit: async (values, setSubmitting) => {
+        const { status, data } = await axios.post(CREATE_URL, values)
+        if (status === 200) {
+            alert(data.mensaje)
+        } else {
+            alert(data.message)
+        }
+
+      },
+    });
 
     return(
-        <form className={classes.form} >
+        <form className={classes.form}   onSubmit={formik.handleSubmit}>
             <TextField
                 variant="outlined"
                 margin="normal"
                 required
                 fullWidth
-                id="name"
+                id="nombre"
                 label="Nombre"
-                name="name"
+                name="nombre"
                 autoComplete="name"
                 autoFocus
+                value={formik.values.nombre}
+                onChange={formik.handleChange}
+                error={formik.touched.nombre && Boolean(formik.errors.nombre)}
+                helperText={formik.touched.nombre && formik.errors.nombre}
             />
             <TextField
                 variant="outlined"
                 margin="normal"
                 required
                 fullWidth
-                id="lastname"
+                id="apellido"
                 label="Apellido"
-                name="lastname"
+                name="apellido"
                 autoComplete="lastname"
+                value={formik.values.apellido}
+                onChange={formik.handleChange}
+                error={formik.touched.apellido && Boolean(formik.errors.apellido)}
+                helperText={formik.touched.apellido && formik.errors.apellido}
             />
             <TextField
                 variant="outlined"
                 margin="normal"
                 required
                 fullWidth
-                id="phone"
+                id="telefono"
                 label="Telefono"
-                name="phone"
+                name="telefono"
                 autoComplete="phone"
+                value={formik.values.telefono}
+                onChange={formik.handleChange}
+                error={formik.touched.telefono && Boolean(formik.errors.telefono)}
+                helperText={formik.touched.telefono && formik.errors.telefono}
             />
             <TextField
                 variant="outlined"
                 margin="normal"
                 required
                 fullWidth
-                id="email"
+                id="correo"
                 label="Correo"
-                name="email"
-                autoComplete="email"
-                autoFocus
+                name="correo"
+                autoComplete="correo"
+                value={formik.values.correo}
+                onChange={formik.handleChange}
+                error={formik.touched.correo && Boolean(formik.errors.correo)}
+                helperText={formik.touched.correo && formik.errors.correo}
               />
               <TextField
                   variant="outlined"
@@ -92,6 +130,10 @@ const UserForm = () => {
                   name="password"
                   autoComplete="password"
                   type="password"
+                  value={formik.values.password}
+                  onChange={formik.handleChange}
+                  error={formik.touched.password && Boolean(formik.errors.password)}
+                  helperText={formik.touched.password && formik.errors.password}
                 />
                 <Button
                   type="submit"
@@ -106,43 +148,78 @@ const UserForm = () => {
     )
 }
 
+const CREATE_URL = 'http://localhost:5002/users'
 
 const PublisherForm = () => {
     const classes = useStyles();
 
+    const formik = useFormik({
+      initialValues: {
+        tipo: 'editor',
+        nombre: '',
+        apellido: '',
+        correo: '',
+        password: '',
+        telefono: '',
+        direccion: ''
+
+      },
+      onSubmit: async (values, setSubmitting) => {
+        const { status, data } = await axios.post(CREATE_URL, values)
+        if (status === 200) {
+            alert(data.mensaje)
+        } else {
+            alert(data.message)
+        }
+
+      },
+    });
+
     return(
-        <form className={classes.form} >
+        <form className={classes.form}  onSubmit={formik.handleSubmit}>
             <TextField
                 variant="outlined"
                 margin="normal"
                 required
                 fullWidth
-                id="name"
+                id="nombre"
                 label="Nombre"
-                name="name"
+                name="nombre"
                 autoComplete="name"
                 autoFocus
+                value={formik.values.nombre}
+                onChange={formik.handleChange}
+                error={formik.touched.nombre && Boolean(formik.errors.nombre)}
+                helperText={formik.touched.nombre && formik.errors.nombre}
             />
             <TextField
                 variant="outlined"
                 margin="normal"
                 required
                 fullWidth
-                id="address"
+                id="direccion"
                 label="Direccion"
-                name="address"
+                name="direccion"
                 autoComplete="address"
+                value={formik.values.direccion}
+                onChange={formik.handleChange}
+                error={formik.touched.direccion && Boolean(formik.errors.direccion)}
+                helperText={formik.touched.direccion && formik.errors.direccion}
             />
             <TextField
                 variant="outlined"
                 margin="normal"
                 required
                 fullWidth
-                id="email"
+                id="correo"
                 label="Correo"
-                name="email"
+                name="correo"
                 autoComplete="email"
                 autoFocus
+                value={formik.values.correo}
+                onChange={formik.handleChange}
+                error={formik.touched.correo && Boolean(formik.errors.correo)}
+                helperText={formik.touched.correo && formik.errors.correo}
               />
               <TextField
                   variant="outlined"
@@ -154,6 +231,10 @@ const PublisherForm = () => {
                   name="password"
                   autoComplete="password"
                   type="password"
+                  value={formik.values.password}
+                  onChange={formik.handleChange}
+                  error={formik.touched.password && Boolean(formik.errors.password)}
+                  helperText={formik.touched.password && formik.errors.password}
                 />
                 <Button
                   type="submit"

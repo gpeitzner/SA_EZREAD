@@ -27,9 +27,11 @@ import PeopleIcon from '@material-ui/icons/People';
 import Users from '../Users'
 import Books from '../Books'
 import AddBook from '../../components/AddBook'
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { cartStatsState } from '../../recoil/selectors';
 import Cart from '../Cart/Cart';
+import { loginState } from '../../recoil/atoms';
+import InputGroupWithExtras from 'react-bootstrap/esm/InputGroup';
 
 
 const drawerWidth = 240;
@@ -108,6 +110,7 @@ const useStyles = makeStyles((theme) => ({
 const Main = () => {
     const classes = useStyles()
     const [open, setOpen] = React.useState(false);
+    const [login] = useRecoilState(loginState)
     const {totalElements} = useRecoilValue(cartStatsState)
     const history = useHistory()
 
@@ -121,6 +124,10 @@ const Main = () => {
 
   const goToCart = () => {
     history.push('/cart')
+  }
+
+  if(!login) {
+      return <div>Debes iniciar sesion</div>
   }
 
     return ( <div className={classes.root}>
