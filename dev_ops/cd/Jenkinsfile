@@ -21,7 +21,32 @@ pipeline {
         }
         stage('Building') {
             steps {
-                echo 'Building..'
+                echo 'Building autentication microservices ...'
+                sh 'docker build --force-rm --no-cache --tag ezread_login:latest ./src/backend/autenticacion/login/'
+                echo 'Building book microservices ...'
+                sh 'docker build --force-rm --no-cache --tag ezread_libro_crear:latest ./src/backend/libro/crear/'
+                sh 'docker build --force-rm --no-cache --tag ezread_libro_editar:latest ./src/backend/libro/editar/'
+                sh 'docker build --force-rm --no-cache --tag ezread_libro_eliminar:latest ./src/backend/libro/eliminar/'
+                sh 'docker build --force-rm --no-cache --tag ezread_libro_obtener:latest ./src/backend/libro/obtener/'
+                echo 'Building order microservices ...'
+                sh 'docker build --force-rm --no-cache --tag ezread_orden_crear:latest ./src/backend/orden/crear/'
+                sh 'docker build --force-rm --no-cache --tag ezread_orden_editar:latest ./src/backend/orden/editar/'
+                sh 'docker build --force-rm --no-cache --tag ezread_orden_eliminar:latest ./src/backend/orden/eliminar/'
+                sh 'docker build --force-rm --no-cache --tag ezread_orden_obtener:latest ./src/backend/orden/obtener/'
+                echo 'Building user microservices ...'
+                sh 'docker build --force-rm --no-cache --tag ezread_usuario_crear:latest ./src/backend/usuario/crear/'
+                /* groovylint-disable-next-line LineLength */
+                sh 'docker build --force-rm --no-cache --tag ezread_usuario_editar:latest ./src/backend/usuario/editar/'''
+                /* groovylint-disable-next-line LineLength */
+                sh 'docker build --force-rm --no-cache --tag ezread_usuario_eliminar:latest ./src/backend/usuario/eliminar/'
+                /* groovylint-disable-next-line LineLength */
+                sh 'docker build --force-rm --no-cache --tag ezread_usuario_obtener:latest ./src/backend/usuario/obtener/'
+                echo 'Building web page ...'
+                sh 'yarn --cwd ./src/frontend/ install'
+                sh 'yarn --cwd ./src/frontend/ build'
+                sh 'docker build --force-rm --no-cache --tag ezread_web:latest ./src/frontend/'
+                echo 'Cleaning intermediate building images ...'
+                sh 'docker image prune -f'
             }
         }
         stage('Integration Testing') {

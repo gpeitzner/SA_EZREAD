@@ -25,12 +25,12 @@ RUN ln -s /tmp/node_modules /${APP}
 # Setting that next commands run on the folder code
 WORKDIR /${APP}
 
-# build argument: ie: --build-arg NODE_ENV=production || NODE_ENV=dev || NODE_ENV=india || NODE_ENV=stagging
+# build argument: ie: --build-arg NODE_ENV=prod || NODE_ENV=dev || NODE_ENV=test
 ARG NODE_ENV
 # This scripts rename .env.local || .env.prod || env.stagging to .env
-RUN ./entry_point.sh $NODE_ENV
+RUN sh entry_point.sh $NODE_ENV
 # Same script but without args, load envVars to build
-RUN ./entry_point.sh
+RUN sh entry_point.sh
 # Build the application by defined command in package.json && .env
 RUN npm run build
 

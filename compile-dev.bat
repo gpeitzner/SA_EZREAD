@@ -16,6 +16,8 @@ docker build --force-rm --no-cache --tag ezread_usuario_crear:latest ./src/backe
 docker build --force-rm --no-cache --tag ezread_usuario_editar:latest ./src/backend/usuario/editar/
 docker build --force-rm --no-cache --tag ezread_usuario_eliminar:latest ./src/backend/usuario/eliminar/
 docker build --force-rm --no-cache --tag ezread_usuario_obtener:latest ./src/backend/usuario/obtener/
+ECHO "Building web page ..."
+docker build  --force-rm --no-cache --build-arg NODE_ENV=dev --tag ezread_ui:latest ./src/frontend/
 ECHO "Cleaning intermediate building images ..."
 docker image prune -f
 ECHO "Everything it's ok :]"
