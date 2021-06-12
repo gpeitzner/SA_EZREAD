@@ -61,7 +61,7 @@ pipeline {
             steps {
                 echo 'Deploying....'
                 withCredentials([file(credentialsId: 'ENV_DEV', variable: 'MY_ENV_DEV')]) {
-                    sh 'cp $MY_ENV_DEV ./env-dev'
+                    sh 'cp $MY_ENV_DEV ./.env-dev'
                     sh 'docker-compose -f ./docker-compose-dev.yml up -d'
                     sh 'sleep 3m'
                     sh 'docker-compose -f ./docker-compose-dev.yml down'
