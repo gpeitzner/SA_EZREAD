@@ -2,8 +2,11 @@ from flask import Flask, request
 import os
 import json
 import pymongo
+from bucket import  Bucket
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 db_host = os.environ["db_host"] if "db_host" in os.environ else "localhost"
 db_password = os.environ["db_password"] if "db_password" in os.environ else ""
@@ -32,5 +35,17 @@ def save():
         if busqueda:
             return {"mensaje": "ya existe"}
         else:
+            # insertar imagen viene en content['image']
+
+            if str(content["Imagen"]).find('data') > -1 or str(content['Imagen']).find('base64') > -1:
+                header,base64 = content['Imagen'].split(",")
+                content['Imagen']= base64
+            #    content["imagen"]= str(content["imagen"]).split('')
+            s3 = Bucket()
+            
+            content['Path'] = s3.write_image(content['Titulo'],content['Imagen'],'')
+            content['Imagen'] = 'https://books-pics.s3.us-east-2.amazonaws.com/'+content['Path']
+
+            # insertar nuevo objeto con imagen
             ret = col.insert_one(content)
             return {"mensaje": "insertado", "id": str(ret.inserted_id)}

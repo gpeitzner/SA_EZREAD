@@ -4,8 +4,10 @@ import json
 import pymongo
 from bson.objectid import ObjectId
 from bson.json_util import dumps
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 db_host = os.environ["db_host"] if "db_host" in os.environ else "localhost"
 db_password = os.environ["db_password"] if "db_password" in os.environ else ""
@@ -23,6 +25,7 @@ col = db["libros"]
 def main2():
     return "<p>libro_obtener</p>"
 
+
 @app.route("/libros")  # obbtener todos los libros registrados.
 def main():
     if request.method == 'GET':
@@ -35,7 +38,8 @@ def main():
                 if (libro['Activo']):
                     libros.append({"id": str(libro['_id']), "Titulo": str(libro['Titulo']), "Editorial": str(
                         libro['Editorial']), "Autor": str(libro['Autor']), "Genero": str(libro['Genero']),
-                        "Cantidad": libro['Cantidad'], "Activo": libro['Activo']})
+                        "Cantidad": libro['Cantidad'], "Activo": libro['Activo'], "Precio": libro['Precio'],
+                        "Imagen": libro['Imagen']})
 
             return {'libros': libros}
         else:
@@ -53,7 +57,8 @@ def obtenerLibro():
             if (libro['Activo']):
                 return {'libro': {"id": str(libro['_id']), "Titulo": str(libro['Titulo']), "Editorial": str(
                         libro['Editorial']), "Autor": str(libro['Autor']), "Genero": str(libro['Genero']),
-                    "Cantidad": libro['Cantidad'], "Activo": libro['Activo']}}
+                    "Cantidad": libro['Cantidad'], "Activo": libro['Activo'], "Precio": libro['Precio'],
+                        "Imagen": libro['Imagen']}}
             else:
                 return {"mensaje": "Libro fuera de stock"}
 
@@ -76,7 +81,9 @@ def obtenerGeneros():
                                 'Genero': "$Genero",
                                 'Autor': "$Autor",
                                 'Cantidad': "$Cantidad",
-                                'Activo': "$Activo"
+                                'Activo': "$Activo",
+                                'Precio': "$Precio",
+                                'Imagen': "$Imagen"
                             },
                             }
             }
@@ -93,7 +100,8 @@ def obtenerGeneros():
                     if (libro['Activo']):
                         books.append({"id": str(libro['id']), "Titulo": str(libro['Titulo']), "Editorial": str(
                             libro['Editorial']), "Autor": str(libro['Autor']),
-                            "Cantidad": libro['Cantidad'], "Activo": libro['Activo']})
+                            "Cantidad": libro['Cantidad'], "Activo": libro['Activo'], "Precio": libro['Precio'],
+                            "Imagen": libro['Imagen']})
 
                 list2.append({'Genero': genero['_id'], 'libros': books})
             return {'Generos': list2}
@@ -116,7 +124,9 @@ def obtenerEditoriales():
                                 'Genero': "$Genero",
                                 'Autor': "$Autor",
                                 'Cantidad': "$Cantidad",
-                                'Activo': "$Activo"
+                                'Activo': "$Activo",
+                                'Imagen' : "$Imagen",
+                                'Precio': "$Precio"
                             },
                             }
             }
@@ -132,7 +142,8 @@ def obtenerEditoriales():
                     if (libro['Activo']):
                         books.append({"id": str(libro['id']), "Titulo": str(libro['Titulo']), "Genero": str(
                             libro['Genero']), "Autor": str(libro['Autor']),
-                            "Cantidad": libro['Cantidad'],  "Activo": libro['Activo']})
+                            "Cantidad": libro['Cantidad'],  "Activo": libro['Activo'], "Precio": libro['Precio'],
+                            "Imagen": libro['Imagen']})
 
                 list2.append({'Editorial': editorial['_id'], 'libros': books})
             return {'Editoriales': list2}
@@ -158,7 +169,8 @@ def obtenerbyEditorial():
                 if (libro['Activo']):
                     books.append({"id": str(libro['_id']), "Titulo": str(libro['Titulo']), "Genero": str(
                         libro['Genero']), "Autor": str(libro['Autor']),
-                        "Cantidad": libro['Cantidad'], "Activo": libro['Activo']})
+                        "Cantidad": libro['Cantidad'], "Activo": libro['Activo'], "Precio": libro['Precio'],
+                        "Imagen": libro['Imagen']})
             return {'libros': books}
         else:
             return {'libros': []}

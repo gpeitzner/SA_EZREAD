@@ -4,8 +4,11 @@ import json
 import pymongo
 from bson.objectid import ObjectId
 from bson.json_util import dumps
+from flask_cors import CORS
+from bucket import Bucket
 
 app = Flask(__name__)
+CORS(app)
 
 db_host = os.environ["db_host"] if "db_host" in os.environ else "localhost"
 db_password = os.environ["db_password"] if "db_password" in os.environ else ""
@@ -29,7 +32,27 @@ def actualizar():
     if request.method == 'PUT':
         content = request.get_json()
         cant = 0
-        resultado = col.update_many(
+
+        if str(content['Imagen']).find('https://books-pics.s3.us-east-2.amazonaws.com/') == -1:
+            # hay que borrar
+            libro = col.find_one({'_id': ObjectId(content["id"])})
+            key = libro["Path"]
+
+            s3 = Bucket()
+            s3.delete_picture(key)
+
+            # insertar nueva imagen
+            if str(content["Imagen"]).find('data') > -1 or str(content['Imagen']).find('base64') > -1:
+                header, base64=content['Imagen'].split(",")
+                content['Imagen']=base64
+            #    content["imagen"]= str(content["imagen"]).split('')
+            s3=Bucket()
+
+            content['Path']=s3.write_image(content['Titulo'], content['Imagen'], '')
+            content['Imagen']='https://books-pics.s3.us-east-2.amazonaws.com/' +content['Path']
+
+
+        resultado=col.update_many(
             {
                 "_id": ObjectId(content["id"])
             },
@@ -40,7 +63,9 @@ def actualizar():
                     "Editorial": content["Editorial"],
                     "Genero": content["Genero"],
                     "Cantidad": content["Cantidad"],
-                    "Activo": content["Activo"]
+                    "Activo": content["Activo"],
+                    "Imagen": content["Imagen"],
+                    "Path": content["Path"]
                 }
             })
         cant = cant + resultado.modified_count
