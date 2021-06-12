@@ -42,9 +42,12 @@ pipeline {
                 /* groovylint-disable-next-line LineLength */
                 sh 'docker build --force-rm --no-cache --tag ezread_usuario_obtener:latest ./src/backend/usuario/obtener/'
                 echo 'Building web page ...'
-                sh 'yarn --cwd ./src/frontend/ install'
-                sh 'yarn --cwd ./src/frontend/ build'
-                sh 'docker build --force-rm --no-cache --tag ezread_web:latest ./src/frontend/'
+                withCredentials([file(credentialsId: 'ENV_PROD', variable: 'MY_ENV_TEST')]) {
+                    sh 'cp $MY_ENV_TEST ./src/frontend/.env.test'
+                    /* groovylint-disable-next-line LineLength */
+                    sh 'docker build --force-rm --no-cache --build-arg NODE_ENV=test --tag ezread_ui:latest ./src/frontend/'
+                    sh 'rm ./src/frontend/.env.test'
+                }
                 echo 'Cleaning intermediate building images ...'
                 sh 'docker image prune -f'
             }
@@ -57,6 +60,7 @@ pipeline {
         stage('Deploying') {
             steps {
                 echo 'Deploying....'
+                sh 'docker-compose -f ./docker-compose-dev.yml up -d'
             }
         }
     }

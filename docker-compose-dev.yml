@@ -104,4 +104,4 @@ services:
     image: ezread_ui:latest
     restart: always
     ports:
-      - 80:80
+      - 8000:80
