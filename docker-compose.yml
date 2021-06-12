@@ -100,3 +100,8 @@ services:
       - ./.env-dev
     ports:
       - 5013:5013
+  ui:
+    image: ezread_ui:latest
+    restart: always
+    ports:
+      - 80:80
