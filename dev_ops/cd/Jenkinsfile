@@ -5,57 +5,6 @@ pipeline {
         CD_HOST     = credentials('CD_HOST')
     }
     stages {
-        stage('Unit Testing') {
-            steps {
-                sh 'python3 ./src/backend/autenticacion/login/test.py'
-                sh 'python3 ./src/backend/usuario/crear/test.py'
-                sh 'python3 ./src/backend/usuario/editar/test.py'
-                sh 'python3 ./src/backend/usuario/eliminar/test.py'
-                sh 'python3 ./src/backend/usuario/obtener/test.py'
-                sh 'python3 ./src/backend/libro/crear/test.py'
-                sh 'python3 ./src/backend/libro/editar/test.py'
-                sh 'python3 ./src/backend/libro/eliminar/test.py'
-                sh 'python3 ./src/backend/libro/obtener/test.py'
-                sh 'python3 ./src/backend/orden/crear/test.py'
-                sh 'python3 ./src/backend/orden/editar/test.py'
-                sh 'python3 ./src/backend/orden/eliminar/test.py'
-                sh 'python3 ./src/backend/orden/obtener/test.py'
-            }
-        }
-        stage('Building') {
-            steps {
-                echo 'Building autentication microservices ...'
-                sh 'docker build --force-rm --no-cache --tag gpeitzner/ezread_login:latest ./src/backend/autenticacion/login/'
-                echo 'Building book microservices ...'
-                sh 'docker build --force-rm --no-cache --tag gpeitzner/ezread_libro_crear:latest ./src/backend/libro/crear/'
-                sh 'docker build --force-rm --no-cache --tag gpeitzner/ezread_libro_editar:latest ./src/backend/libro/editar/'
-                sh 'docker build --force-rm --no-cache --tag gpeitzner/ezread_libro_eliminar:latest ./src/backend/libro/eliminar/'
-                sh 'docker build --force-rm --no-cache --tag gpeitzner/ezread_libro_obtener:latest ./src/backend/libro/obtener/'
-                echo 'Building order microservices ...'
-                sh 'docker build --force-rm --no-cache --tag gpeitzner/ezread_orden_crear:latest ./src/backend/orden/crear/'
-                sh 'docker build --force-rm --no-cache --tag gpeitzner/ezread_orden_editar:latest ./src/backend/orden/editar/'
-                sh 'docker build --force-rm --no-cache --tag gpeitzner/ezread_orden_eliminar:latest ./src/backend/orden/eliminar/'
-                sh 'docker build --force-rm --no-cache --tag gpeitzner/ezread_orden_obtener:latest ./src/backend/orden/obtener/'
-                echo 'Building user microservices ...'
-                sh 'docker build --force-rm --no-cache --tag gpeitzner/ezread_usuario_crear:latest ./src/backend/usuario/crear/'
-                sh 'docker build --force-rm --no-cache --tag gpeitzner/ezread_usuario_editar:latest ./src/backend/usuario/editar/'
-                sh 'docker build --force-rm --no-cache --tag gpeitzner/ezread_usuario_eliminar:latest ./src/backend/usuario/eliminar/'
-                sh 'docker build --force-rm --no-cache --tag gpeitzner/ezread_usuario_obtener:latest ./src/backend/usuario/obtener/'
-                echo 'Building web page ...'
-                withCredentials([file(credentialsId: 'FRONTEND_TEST', variable: 'MY_FRONTEND_TEST')]) {
-                    sh 'cp $MY_FRONTEND_TEST ./src/frontend/.env.test'
-                    sh 'docker build --force-rm --no-cache --build-arg NODE_ENV=test --tag gpeitzner/ezread_ui:latest ./src/frontend/'
-                    sh 'rm ./src/frontend/.env.test'
-                }
-                echo 'Cleaning intermediate building images ...'
-                sh 'docker image prune -f'
-            }
-        }
-        stage('Integration Testing') {
-            steps {
-                echo 'Testing....'
-            }
-        }
         stage('Deploying') {
             steps {
                 echo 'Deploying....'
