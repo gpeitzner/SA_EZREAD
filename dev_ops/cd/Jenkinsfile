@@ -83,10 +83,8 @@ pipeline {
                 // sh 'docker push gpeitzner/ezread_usuario_obtener:latest'
                 // sh 'docker push gpeitzner/ezread_ui:latest'
                 withCredentials([file(credentialsId: 'BACKEND_PROD', variable: 'MY_BACKEND_PROD')]) {
-                    sh 'mkdir config'
-                    sh 'cp $MY_BACKEND_PROD ./config/.env-prod'
+                    sh 'cp $MY_BACKEND_PROD ./.env-prod'
                     sh 'python3 ./dev_ops/cd/deploy.py'
-                    sh 'rm -rf config'
                 }
             }
         }
