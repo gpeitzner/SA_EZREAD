@@ -3,10 +3,32 @@ from fabric import Connection
 
 cd_host = os.environ["CD_HOST"]
 
+Connection(cd_host).run('export DEBIAN_FRONTEND=noninteractive')
+Connection(cd_host).run('sudo apt update')
+Connection(cd_host).run('sudo apt upgrade')
+Connection(cd_host).run('sudo apt autoremove')
 
-Connection(cd_host).run("sudo apt update")
-Connection(cd_host).run("sudo apt upgrade")
-Connection(cd_host).run("sudo apt autoremove")
+Connection(cd_host).run('sudo apt-get update')
+Connection(cd_host).run('sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release')
+Connection(cd_host).run(
+    ' curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg')
+Connection(cd_host).run('echo \
+  "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null')
+Connection(cd_host).run('sudo apt-get update')
+Connection(cd_host).run(
+    'sudo apt-get install docker-ce docker-ce-cli containerd.io')
+Connection(cd_host).run('sudo groupadd docker')
+Connection(cd_host).run('sudo usermod -aG docker jenkins')
+Connection(cd_host).run('newgrp docker')
+Connection(cd_host).run(
+    'sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose')
+Connection(cd_host).run('sudo chmod +x /usr/local/bin/docker-compose')
 
 
 try:
@@ -29,3 +51,16 @@ try:
 except:
     print("env-prod already exists")
 
+
+try:
+    Connection(cd_host).run('docker-compose -f ./docker-compose-prod.yml down')
+except:
+    print("Stack not created")
+try:
+    Connection(cd_host).run('docker-compose -f ./docker-compose-prod.yml pull')
+except:
+    print("Stack updated")
+try:
+    Connection(cd_host).run('docker-compose -f ./docker-compose-prod.yml up -d')
+except:
+    print("Stack already created")
