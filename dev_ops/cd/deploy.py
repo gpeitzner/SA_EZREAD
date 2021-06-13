@@ -15,11 +15,14 @@ Connection(cd_host).run('sudo apt-get install \
     curl \
     gnupg \
     lsb-release -y')
-Connection(cd_host).run(
-    ' curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg')
-Connection(cd_host).run('echo \
-  "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null')
+try:
+    Connection(cd_host).run(
+        'curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg')
+    Connection(cd_host).run('echo \
+    "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+    $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null')
+except:
+    print("Repository already exists")
 Connection(cd_host).run('sudo apt-get update')
 Connection(cd_host).run(
     'sudo apt-get install docker-ce docker-ce-cli containerd.io -y')
@@ -60,6 +63,7 @@ try:
 except:
     print("Stack updated")
 try:
-    Connection(cd_host).run('docker-compose -f ./docker-compose-prod.yml up -d')
+    Connection(cd_host).run(
+        'docker-compose -f ./docker-compose-prod.yml up -d')
 except:
     print("Stack already created")
