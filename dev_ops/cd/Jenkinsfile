@@ -1,7 +1,9 @@
 /* groovylint-disable CompileStatic, DuplicateStringLiteral, LineLength */
 pipeline {
     agent any
-
+    environment {
+        CD_HOST     = credentials('CD_HOST')
+    }
     stages {
         stage('Unit Testing') {
             steps {
@@ -80,6 +82,11 @@ pipeline {
                 sh 'docker push gpeitzner/ezread_usuario_eliminar:latest'
                 sh 'docker push gpeitzner/ezread_usuario_obtener:latest'
                 sh 'docker push gpeitzner/ezread_ui:latest'
+                withCredentials([file(credentialsId: 'BACKEND_PROD', variable: 'MY_BACKEND_PROD')]) {
+                    sh 'cp $MY_BACKEND_PROD ./dev_ops/cd/.env.prod'
+                    sh 'python3 ./dev_ops/cd/deploy.py'
+                    sh 'rm ./dev_ops/cd/.env.prod'
+                }
             }
         }
     }
