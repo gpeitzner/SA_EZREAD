@@ -23,7 +23,6 @@ Connection(cd_host).run('echo \
 Connection(cd_host).run('sudo apt-get update')
 Connection(cd_host).run(
     'sudo apt-get install docker-ce docker-ce-cli containerd.io -y')
-Connection(cd_host).run('sudo groupadd docker')
 Connection(cd_host).run('sudo usermod -aG docker jenkins')
 Connection(cd_host).run('newgrp docker')
 Connection(cd_host).run(
