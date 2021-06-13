@@ -14,7 +14,7 @@ Connection(cd_host).run('sudo apt-get install \
     ca-certificates \
     curl \
     gnupg \
-    lsb-release')
+    lsb-release -y')
 Connection(cd_host).run(
     ' curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg')
 Connection(cd_host).run('echo \
@@ -22,7 +22,7 @@ Connection(cd_host).run('echo \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null')
 Connection(cd_host).run('sudo apt-get update')
 Connection(cd_host).run(
-    'sudo apt-get install docker-ce docker-ce-cli containerd.io')
+    'sudo apt-get install docker-ce docker-ce-cli containerd.io -y')
 Connection(cd_host).run('sudo groupadd docker')
 Connection(cd_host).run('sudo usermod -aG docker jenkins')
 Connection(cd_host).run('newgrp docker')
