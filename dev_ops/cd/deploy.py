@@ -32,6 +32,4 @@ except:
 
 
 Connection(cd_host).run(
-    "sudo docker-compose -f ./docker-compose-prod.yml pull")
-Connection(cd_host).run(
     "sudo docker-compose -f ./docker-compose-prod.yml up -d")
