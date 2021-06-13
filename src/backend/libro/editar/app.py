@@ -33,44 +33,71 @@ def actualizar():
         content = request.get_json()
         cant = 0
 
-        if str(content['Imagen']).find('https://books-pics.s3.us-east-2.amazonaws.com/') == -1:
-            # hay que borrar
-            libro = col.find_one({'_id': ObjectId(content["id"])})
-            key = libro["Path"]
+        busqueda = col.find_one(
+            {'Titulo': content['Titulo'], 'Editorial': content['Editorial'], 'Autor': content['Autor'], 'Genero': content['Genero']})
 
-            s3 = Bucket()
-            s3.delete_picture(key)
+        if busqueda:
+            return {"modificado": "ya existe"}
+        else:  
+            if str(content['Imagen']).find('https://books-pics.s3.us-east-2.amazonaws.com/') == -1:
+                # hay que borrar
 
-            # insertar nueva imagen
-            if str(content["Imagen"]).find('data') > -1 or str(content['Imagen']).find('base64') > -1:
-                header, base64=content['Imagen'].split(",")
-                content['Imagen']=base64
-            #    content["imagen"]= str(content["imagen"]).split('')
-            s3=Bucket()
+                libro = col.find_one({'_id': ObjectId(content["id"])})
+                key = libro["Path"]
+                if key:
+                    s3 = Bucket()
+                    s3.delete_picture(key)
+                # insertar nueva imagen
+                if str(content["Imagen"]).find('data') > -1 or str(content['Imagen']).find('base64') > -1:
+                    header, base64 = content['Imagen'].split(",")
+                    content['Imagen'] = base64
+                #    content["imagen"]= str(content["imagen"]).split('')
+                s3 = Bucket()
 
-            content['Path']=s3.write_image(content['Titulo'], content['Imagen'], '')
-            content['Imagen']='https://books-pics.s3.us-east-2.amazonaws.com/' +content['Path']
+                content['Path'] = s3.write_image(
+                    content['Titulo'], content['Imagen'], '')
+                content['Imagen'] = 'https://books-pics.s3.us-east-2.amazonaws.com/' + \
+                    content['Path']
 
+            if 'Path' in content:
+                resultado = col.update_many(
+                {
+                    "_id": ObjectId(content["id"])
+                },
+                {
+                    '$set': {
+                        "Titulo": content["Titulo"],
+                        "Autor": content["Autor"],
+                        "Editorial": content["Editorial"],
+                        "Genero": content["Genero"],
+                        "Cantidad": content["Cantidad"],
+                        "Activo": content["Activo"],
+                        "Imagen": content["Imagen"],
+                        "Path": content["Path"],
+                        "Precio": content["Precio"]
+                    }
+                })
+                cant = cant + resultado.modified_count
+            else:
+                resultado = col.update_many(
+                {
+                    "_id": ObjectId(content["id"])
+                },
+                {
+                    '$set': {
+                        "Titulo": content["Titulo"],
+                        "Autor": content["Autor"],
+                        "Editorial": content["Editorial"],
+                        "Genero": content["Genero"],
+                        "Cantidad": content["Cantidad"],
+                        "Activo": content["Activo"],
+                        "Imagen": content["Imagen"],
+                        "Precio": content["Precio"]
+                    }
+                })
+                cant = cant + resultado.modified_count
 
-        resultado=col.update_many(
-            {
-                "_id": ObjectId(content["id"])
-            },
-            {
-                '$set': {
-                    "Titulo": content["Titulo"],
-                    "Autor": content["Autor"],
-                    "Editorial": content["Editorial"],
-                    "Genero": content["Genero"],
-                    "Cantidad": content["Cantidad"],
-                    "Activo": content["Activo"],
-                    "Imagen": content["Imagen"],
-                    "Path": content["Path"]
-                }
-            })
-        cant = cant + resultado.modified_count
-
-        return {"modificado": cant}
+            return {"modificado": cant}
 
 
 @app.route('/libros/stock', methods=['PUT'])
