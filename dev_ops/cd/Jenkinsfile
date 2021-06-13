@@ -42,7 +42,7 @@ pipeline {
                 echo 'Building web page ...'
                 withCredentials([file(credentialsId: 'FRONTEND_TEST', variable: 'MY_FRONTEND_TEST')]) {
                     sh 'cp $MY_FRONTEND_TEST ./src/frontend/.env.test'
-                    sh 'docker build --force-rm --no-cache --build-arg NODE_ENV=test --tag ezread_ui:latest ./src/frontend/'
+                    sh 'docker build --force-rm --no-cache --build-arg NODE_ENV=test --tag gpeitzner/ezread_ui:latest ./src/frontend/'
                     sh 'rm ./src/frontend/.env.test'
                 }
                 echo 'Cleaning intermediate building images ...'
@@ -60,7 +60,7 @@ pipeline {
                 echo 'Building web page ...'
                 withCredentials([file(credentialsId: 'FRONTEND_PROD', variable: 'MY_FRONTEND_PROD')]) {
                     sh 'cp $MY_FRONTEND_PROD ./src/frontend/.env.prod'
-                    sh 'docker build --force-rm --no-cache --build-arg NODE_ENV=prod --tag ezread_ui:latest ./src/frontend/'
+                    sh 'docker build --force-rm --no-cache --build-arg NODE_ENV=prod --tag gpeitzner/ezread_ui:latest ./src/frontend/'
                     sh 'rm ./src/frontend/.env.prod'
                 }
                 echo 'Cleaning intermediate building images ...'
