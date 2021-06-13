@@ -2,7 +2,7 @@ from flask import Flask, request
 import os
 import json
 import pymongo
-from bucket import  Bucket
+from bucket import Bucket
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -37,15 +37,24 @@ def save():
         else:
             # insertar imagen viene en content['image']
 
-            if str(content["Imagen"]).find('data') > -1 or str(content['Imagen']).find('base64') > -1:
-                header,base64 = content['Imagen'].split(",")
-                content['Imagen']= base64
-            #    content["imagen"]= str(content["imagen"]).split('')
-            s3 = Bucket()
-            
-            content['Path'] = s3.write_image(content['Titulo'],content['Imagen'],'')
-            content['Imagen'] = 'https://books-pics.s3.us-east-2.amazonaws.com/'+content['Path']
+            if (content["Imagen"]):
+                if str(content["Imagen"]).find('data') > -1 or str(content['Imagen']).find('base64') > -1:
+                    header, base64 = content['Imagen'].split(",")
+                    content['Imagen'] = base64
 
+            #    content["imagen"]= str(content["imagen"]).split('')
+                s3 = Bucket()
+
+                content['Path'] = s3.write_image(
+                    content['Titulo'], content['Imagen'], '')
+                content['Imagen'] = 'https://books-pics.s3.us-east-2.amazonaws.com/'+content['Path']
+
+            content["Path"]=""
+            content["Imagen"]=""
             # insertar nuevo objeto con imagen
-            ret = col.insert_one(content)
-            return {"mensaje": "insertado", "id": str(ret.inserted_id)}
+
+            if 'Imagen' in content and 'Path' in content and 'Precio' in content and 'Autor' in content and 'Titulo' in content and 'Editorial' in content and 'Genero' in content and 'Activo' in content and 'Cantidad' in content:
+                ret = col.insert_one(content)
+                return {"mensaje": "insertado", "id": str(ret.inserted_id)}
+            else:
+                return {"mensaje": "faltan campos"}
