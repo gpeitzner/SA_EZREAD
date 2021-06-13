@@ -42,7 +42,7 @@ pipeline {
                 /* groovylint-disable-next-line LineLength */
                 sh 'docker build --force-rm --no-cache --tag ezread_usuario_obtener:latest ./src/backend/usuario/obtener/'
                 echo 'Building web page ...'
-                withCredentials([file(credentialsId: 'ENV_PROD', variable: 'MY_ENV_TEST')]) {
+                withCredentials([file(credentialsId: 'ENV_TEST', variable: 'MY_ENV_TEST')]) {
                     sh 'cp $MY_ENV_TEST ./src/frontend/.env.test'
                     /* groovylint-disable-next-line LineLength */
                     sh 'docker build --force-rm --no-cache --build-arg NODE_ENV=test --tag ezread_ui:latest ./src/frontend/'
