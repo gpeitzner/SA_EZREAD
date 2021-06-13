@@ -4,104 +4,102 @@ services:
     image: mongo:latest
     restart: always
     env_file:
-      - ./.env-dev
+      - ./.env-test
     ports:
       - 27017:27017
-    volumes:
-      - ./mongo-dev-data:/data/db
   login:
     image: ezread_login:latest
     restart: always
     env_file:
-      - ./.env-dev
+      - ./.env-test
     ports:
       - 5000:5000
   usuario_crear:
     image: ezread_usuario_crear:latest
     restart: always
     env_file:
-      - ./.env-dev
+      - ./.env-test
     ports:
       - 5002:5002
   usuario_editar:
     image: ezread_usuario_editar:latest
     restart: always
     env_file:
-      - ./.env-dev
+      - ./.env-test
     ports:
       - 5003:5003
   usuario_eliminar:
     image: ezread_usuario_eliminar:latest
     restart: always
     env_file:
-      - ./.env-dev
+      - ./.env-test
     ports:
       - 5004:5004
   usuario_obtener:
     image: ezread_usuario_obtener:latest
     restart: always
     env_file:
-      - ./.env-dev
+      - ./.env-test
     ports:
       - 5005:5005
   libro_crear:
     image: ezread_libro_crear:latest
     restart: always
     env_file:
-      - ./.env-dev
+      - ./.env-test
     ports:
       - 5006:5006
   libro_editar:
     image: ezread_libro_editar:latest
     restart: always
     env_file:
-      - ./.env-dev
+      - ./.env-test
     ports:
       - 5007:5007
   libro_eliminar:
     image: ezread_libro_eliminar:latest
     restart: always
     env_file:
-      - ./.env-dev
+      - ./.env-test
     ports:
       - 5008:5008
   libro_obtener:
     image: ezread_libro_obtener:latest
     restart: always
     env_file:
-      - ./.env-dev
+      - ./.env-test
     ports:
       - 5009:5009
   orden_crear:
     image: ezread_orden_crear:latest
     restart: always
     env_file:
-      - ./.env-dev
+      - ./.env-test
     ports:
       - 5010:5010
   orden_editar:
     image: ezread_orden_editar:latest
     restart: always
     env_file:
-      - ./.env-dev
+      - ./.env-test
     ports:
       - 5011:5011
   orden_eliminar:
     image: ezread_orden_eliminar:latest
     restart: always
     env_file:
-      - ./.env-dev
+      - ./.env-test
     ports:
       - 5012:5012
   orden_obtener:
     image: ezread_orden_obtener:latest
     restart: always
     env_file:
-      - ./.env-dev
+      - ./.env-test
     ports:
       - 5013:5013
   ui:
     image: ezread_ui:latest
     restart: always
     ports:
-      - 80:80
+      - 8080:80

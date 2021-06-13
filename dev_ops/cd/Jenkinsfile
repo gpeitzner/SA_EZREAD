@@ -1,3 +1,4 @@
+/* groovylint-disable CompileStatic, DuplicateStringLiteral, LineLength */
 pipeline {
     agent any
 
@@ -35,16 +36,12 @@ pipeline {
                 sh 'docker build --force-rm --no-cache --tag ezread_orden_obtener:latest ./src/backend/orden/obtener/'
                 echo 'Building user microservices ...'
                 sh 'docker build --force-rm --no-cache --tag ezread_usuario_crear:latest ./src/backend/usuario/crear/'
-                /* groovylint-disable-next-line LineLength */
                 sh 'docker build --force-rm --no-cache --tag ezread_usuario_editar:latest ./src/backend/usuario/editar/'
-                /* groovylint-disable-next-line LineLength */
                 sh 'docker build --force-rm --no-cache --tag ezread_usuario_eliminar:latest ./src/backend/usuario/eliminar/'
-                /* groovylint-disable-next-line LineLength */
                 sh 'docker build --force-rm --no-cache --tag ezread_usuario_obtener:latest ./src/backend/usuario/obtener/'
                 echo 'Building web page ...'
-                withCredentials([file(credentialsId: 'ENV_TEST', variable: 'MY_ENV_TEST')]) {
-                    sh 'cp $MY_ENV_TEST ./src/frontend/.env.test'
-                    /* groovylint-disable-next-line LineLength */
+                withCredentials([file(credentialsId: 'FRONTEND_TEST', variable: 'MY_FRONTEND_TEST')]) {
+                    sh 'cp $MY_FRONTEND_TEST ./src/frontend/.env.test'
                     sh 'docker build --force-rm --no-cache --build-arg NODE_ENV=test --tag ezread_ui:latest ./src/frontend/'
                     sh 'rm ./src/frontend/.env.test'
                 }
@@ -60,12 +57,15 @@ pipeline {
         stage('Deploying') {
             steps {
                 echo 'Deploying....'
-                withCredentials([file(credentialsId: 'ENV_DEV', variable: 'MY_ENV_DEV')]) {
-                    sh 'cp $MY_ENV_DEV ./.env-dev'
-                    sh 'docker-compose -f ./docker-compose-dev.yml up -d'
-                    sh 'sleep 3m'
-                    sh 'docker-compose -f ./docker-compose-dev.yml down'
+                echo 'Building web page ...'
+                withCredentials([file(credentialsId: 'FRONTEND_PROD', variable: 'MY_FRONTEND_PROD')]) {
+                    sh 'cp $MY_FRONTEND_PROD ./src/frontend/.env.prod'
+                    sh 'docker build --force-rm --no-cache --build-arg NODE_ENV=prod --tag ezread_ui:latest ./src/frontend/'
+                    sh 'rm ./src/frontend/.env.prod'
                 }
+                echo 'Cleaning intermediate building images ...'
+                sh 'docker image prune -f'
+                echo 'Pushing images to docker registry ...'
             }
         }
     }
