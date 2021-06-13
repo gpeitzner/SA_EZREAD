@@ -66,6 +66,20 @@ pipeline {
                 echo 'Cleaning intermediate building images ...'
                 sh 'docker image prune -f'
                 echo 'Pushing images to docker registry ...'
+                sh 'docker push gpeitzner/ezread_login:latest'
+                sh 'docker push gpeitzner/ezread_libro_crear:latest'
+                sh 'docker push gpeitzner/ezread_libro_editar:latest'
+                sh 'docker push gpeitzner/ezread_libro_eliminar:latest'
+                sh 'docker push gpeitzner/ezread_libro_obtener:latest'
+                sh 'docker push gpeitzner/ezread_orden_crear:latest'
+                sh 'docker push gpeitzner/ezread_orden_editar:latest'
+                sh 'docker push gpeitzner/ezread_orden_eliminar:latest'
+                sh 'docker push gpeitzner/ezread_orden_obtener:latest'
+                sh 'docker push gpeitzner/ezread_usuario_crear:latest'
+                sh 'docker push gpeitzner/ezread_usuario_editar:latest'
+                sh 'docker push gpeitzner/ezread_usuario_eliminar:latest'
+                sh 'docker push gpeitzner/ezread_usuario_obtener:latest'
+                sh 'docker push gpeitzner/ezread_ui:latest'
             }
         }
     }
