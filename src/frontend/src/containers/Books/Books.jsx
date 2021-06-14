@@ -1,4 +1,5 @@
 import { Card, CardActionArea, CardActions, CardContent, CardMedia, IconButton, Typography } from '@material-ui/core'
+import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import * as React from 'react'
 import AddCircleIcon from '@material-ui/icons/AddCircle';
@@ -7,33 +8,14 @@ import { useRecoilState } from 'recoil';
 import { cartState } from '../../recoil/atoms';
 import axios from 'axios';
 
-const books = [
-    {
-        "Editorial": "Espasa",
-         "Titulo": "La Rebelión de las masas",
-         "Genero": "Filosofía",
-         "Autor" : "José Ortega y Gasset",
-         "Activo": 1,
-         "Cantidad" : 25,
-         "id" :"60c0645b5a6ff4fc067a6bd3",
-         "image":"https://enlinea.santotomas.cl/wp-content/uploads/sites/2/2020/10/Perros-mestizos.jpg"
-         },
-         {
-             "Editorial": "Espasa",
-              "Titulo": "La Rebelión de las masas",
-              "Genero": "Filosofía",
-              "Autor" : "José Ortega y Gasset",
-              "Activo": 1,
-              "Cantidad" : 0,
-              "id" :"60c0645b5a6ff4fc067a6bdee",
-              "image":"https://enlinea.santotomas.cl/wp-content/uploads/sites/2/2020/10/Perros-mestizos.jpg"
-              }
-     
-]
-
 const useStyles = makeStyles((theme) => ({
+    root: {
+        display: 'flex',
+        flexWrap: 'wrap',
+    },
     card: {
-        maxWidth: "345px"
+        maxWidth: "345px",
+        margin: 10
     },
     cardMedia: {
         height: 140
@@ -88,7 +70,7 @@ const Book = ({book}) => {
             <CardActionArea onClick={ () => selectBook(book.id)}>
                 <CardMedia
                 className={classes.cardMedia}
-                image={book.image}
+                image={book.Imagen}
                 title={book.Title}
                 />
                 <CardContent>
@@ -102,6 +84,9 @@ const Book = ({book}) => {
                         <br/>
                         Genero: {book.Genero}
                     </Typography>
+                    <Link to={`/books/${book.id}/edit`} >
+                        Editar
+                    </Link>
                 </CardContent>
             </CardActionArea>
             <CardActions className={classes.cardActions}>
@@ -124,12 +109,14 @@ const GET_URL = process.env.REACT_APP_BOOK_GET_ALL_URL
 
 const Books = () => {
     const classes = useStyles()
+    const [libros, setLibros] = React.useState([])
 
     React.useEffect(() => {
         const getAsync = async () => {
                 const { status, data } = await axios.get(`${GET_URL}`)
                 if (status === 200) {
-                    alert(data.mensaje)
+                    if(data && data.libros)
+                        setLibros(data.libros)
                 } else {
                     alert(data.message)
                 }
@@ -139,9 +126,9 @@ const Books = () => {
 
 
     return(
-        <div>
+        <div className={classes.root}>
         {
-            books.filter(book => book.Cantidad > 0 ).map( book => (
+            libros.filter(book => book.Cantidad > 0 ).map( book => (
                 <Book key={book.id}  book={book}/>
             ))
         }
