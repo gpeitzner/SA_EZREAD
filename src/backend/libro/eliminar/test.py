@@ -1,5 +1,13 @@
 import unittest
 from app import app
+from unittest.mock import patch
+import json
+
+
+def updateOne_mock(_, d):
+    return {
+        "modified count": 1
+    }
 
 
 class FlaskTest(unittest.TestCase):
