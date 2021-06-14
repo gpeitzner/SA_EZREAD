@@ -126,9 +126,9 @@ const Main = () => {
     history.push('/cart')
   }
 
-  if(!login) {
-      return <div>Debes iniciar sesion</div>
-  }
+//   if(!login) {
+//       return <div>Debes iniciar sesion</div>
+//   }
 
     return ( <div className={classes.root}>
         <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>

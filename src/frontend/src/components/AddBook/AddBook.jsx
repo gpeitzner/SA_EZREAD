@@ -4,17 +4,24 @@ import { useFormik } from 'formik';
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 
-const book = 
-{
-    "Editorial": "Espasa",
-     "Titulo": "La Rebelión de las masas",
-     "Genero": "Filosofía",
-     "Autor" : "José Ortega y Gasset",
-     "Activo": 1,
-     "Cantidad" : 25,
-     "id" :"60c0645b5a6ff4fc067a6bd3",
-    // "Image":"https://enlinea.santotomas.cl/wp-content/uploads/sites/2/2020/10/Perros-mestizos.jpg"
-     }
+const getBase64 = (file) => new Promise((resolve) => {
+    // let fileInfo
+    let baseURL = ''
+    // Make new FileReader
+    const reader = new FileReader()
+  
+    // Convert the file to base64 text
+    reader.readAsDataURL(file)
+  
+    // on reader load somthing...
+    reader.onload = () => {
+      // Make a fileInfo Object
+      baseURL = reader.result
+      const c = baseURL.split(',')
+      resolve(c[1])
+    }
+  })
+  
 
 
      const useStyles = makeStyles( theme => ({
@@ -52,6 +59,10 @@ const DELETE_URL =  process.env.REACT_APP_BOOK_DELETE_URL
 const AddBook = () => {
     const classes = useStyles()
     const { bookId } = useParams()
+    const [libro, setLibro] = React.useState(null)
+    const [fotografia, setFotografia] = React.useState("")
+
+    console.log({bookId})
     
 
     React.useEffect(() => {
@@ -59,7 +70,10 @@ const AddBook = () => {
             if(bookId) {
                 const { status, data } = await axios.get(`${GET_URL}?id=${bookId}`)
                 if (status === 200) {
-                    alert(data.mensaje)
+                    if(data && data.libro) {
+                        setLibro({...data.libro, cambioFoto : false, fotografia: ''})
+                        formik.setValues(data.libro)
+                    }
                 } else {
                     alert(data.message)
                 }
@@ -70,7 +84,7 @@ const AddBook = () => {
 
 
     const deleteAction = async () => {
-        const { status, data } = await axios.delete(`${DELETE_URL}?=id${bookId}`)
+        const { status, data } = await axios.delete(`${DELETE_URL}?id=${bookId}`)
         if (status === 200) {
             alert(data.mensaje)
         } else {
@@ -79,10 +93,16 @@ const AddBook = () => {
     }
 
     const formik = useFormik({
-        initialValues: emptyBook,
+        initialValues: {},
         onSubmit: async (values, setSubmitting) => {
+            console.log({bookId})
             if(bookId) {
-                const { status, data } = await axios.put(`${EDIT_URL}`, values)
+                const nValues = { ...values }
+                if(fotografia) {
+                    nValues.Imagen = fotografia
+                }
+
+                const { status, data } = await axios.put(`${EDIT_URL}`, nValues)
                 if (status === 200) {
                     alert(data.mensaje)
                 } else {
@@ -90,7 +110,12 @@ const AddBook = () => {
                 }
                 setSubmitting(false)
             } else {
-                const { status, data } = await axios.post(CREATE_URL, values)
+                const nValues = { ...values, 
+                    "Activo": 1 }
+                if(fotografia) {
+                    nValues.Imagen = fotografia
+                }
+                const { status, data } = await axios.post(CREATE_URL, nValues)
                 if (status === 200) {
                     alert(data.mensaje)
                 } else {
@@ -168,18 +193,39 @@ const AddBook = () => {
                 helperText={formik.touched.Cantidad && formik.errors.Cantidad}
                 className={classes.field}
                 />
+                <TextField
+                fullWidth
+                id="Precio"
+                name="Precio"
+                label="Precio"
+                type="number"
+                value={formik.values.Precio}
+                onChange={formik.handleChange}
+                error={formik.touched.Precio && Boolean(formik.errors.Precio)}
+                helperText={formik.touched.Precio && formik.errors.Precio}
+                className={classes.field}
+                />
 
 
                 <TextField
                 fullWidth
-                id="Image"
-                name="Image"
+                id="fotografia"
+                name="fotografia"
                 label="Image"
                 type="file"
-                value={formik.values.Image}
-                onChange={formik.handleChange}
-                error={formik.touched.Image && Boolean(formik.errors.Image)}
-                helperText={formik.touched.Image && formik.errors.Image}
+                value={formik.values.foto_uri}
+                onChange={async (event) => {
+                    console.log({event})
+                    try {
+                      const file = event.currentTarget.files[0]
+                      const result = await getBase64(file)
+                      setFotografia(result)
+                    } catch(e) {
+                        setFotografia("")
+                    }
+                  }}  
+                error={formik.touched.foto_uri && Boolean(formik.errors.foto_uri)}
+                helperText={formik.touched.foto_uri && formik.errors.foto_uri}
                 />
                 <div className={classes.buttoContainer}>
                     <Button color="primary" variant="contained" fullWidth type="submit">

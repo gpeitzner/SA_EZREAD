@@ -2,9 +2,10 @@ import * as React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardContent, Container, IconButton, Typography, CardMedia,CardActions,FormLabel,RadioGroup,Radio,FormControlLabel,Button } from '@material-ui/core';
 import { useRecoilState } from 'recoil';
-import { cartState } from '../../recoil/atoms';
+import { cartState,loginState } from '../../recoil/atoms';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
+import axios from 'axios'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -32,11 +33,17 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
+
+const CREATE_URL = process.env.REACT_APP_ORDER_CREATE_URL
+
+console.log({CREATE_URL})
+
 const Cart = () => {
 
     const [cart, setCart] = useRecoilState(cartState)
     const [paymentType, setPaymentType] = React.useState('tarjeta')
     const [shippingType, setShippingTypeType] = React.useState('normal')
+    const [login] = useRecoilState(loginState)
     const classes = useStyles()
 
     const addToCart = (book,quantity) => {
@@ -74,8 +81,19 @@ const Cart = () => {
 
     }
 
-    const createOrder = () => {
-        
+    const createOrder = async () => {
+        const values = {
+            usuario: login.id,
+            tipoPago: paymentType,
+            tipoEnvio: shippingType,
+            libros: cart
+        }
+        const { status, data } = await axios.post(CREATE_URL, values)
+        if (status === 200) {
+            alert(data.mensaje)
+        } else {
+        alert(data.message)
+        }
     }
 
     return(
@@ -88,7 +106,7 @@ const Cart = () => {
                     <Card className={classes.card}>
                         <CardMedia
                         className={classes.cardMedia}
-                        image={book.image}
+                        image={book.Imagen}
                         title={book.Title}
                         />
                         <CardContent className={classes.content}>
