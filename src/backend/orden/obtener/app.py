@@ -19,7 +19,8 @@ col = db["ordenes"]
 
 @app.route("/ordenes", methods=["GET"])
 def create():
-    usuario = request.form["usuario"]
+    data = request.get_json()
+    usuario = data["usuario"]
     existe = col.find_one({'usuario': usuario, 'estado':"0"})
     if existe: #se retorna
         #print(existe['usuario'])
