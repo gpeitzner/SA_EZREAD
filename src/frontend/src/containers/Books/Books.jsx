@@ -5,7 +5,7 @@ import * as React from 'react'
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import { useRecoilState } from 'recoil';
-import { cartState } from '../../recoil/atoms';
+import { cartState, loginState } from '../../recoil/atoms';
 import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
 const Book = ({book}) => {
 
     const [cart, setCart] = useRecoilState(cartState)
+    const [login] = useRecoilState(loginState)
     
     const selectBook = (bookId) => {
 
@@ -84,9 +85,13 @@ const Book = ({book}) => {
                         <br/>
                         Genero: {book.Genero}
                     </Typography>
-                    <Link to={`/books/${book.id}/edit`} >
-                        Editar
-                    </Link>
+                    {
+                        login.tipo === 'editor' && login.nombre === book.Editorial && (
+                            <Link to={`/books/${book.id}/edit`} >
+                            Editar
+                            </Link>
+                        )
+                    }
                 </CardContent>
             </CardActionArea>
             <CardActions className={classes.cardActions}>

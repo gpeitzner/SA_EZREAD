@@ -31,7 +31,7 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import { cartStatsState } from '../../recoil/selectors';
 import Cart from '../Cart/Cart';
 import { loginState } from '../../recoil/atoms';
-import InputGroupWithExtras from 'react-bootstrap/esm/InputGroup';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 
 const drawerWidth = 240;
@@ -110,7 +110,7 @@ const useStyles = makeStyles((theme) => ({
 const Main = () => {
     const classes = useStyles()
     const [open, setOpen] = React.useState(false);
-    const [login] = useRecoilState(loginState)
+    const [login, setLogin] = useRecoilState(loginState)
     const {totalElements} = useRecoilValue(cartStatsState)
     const history = useHistory()
 
@@ -126,9 +126,13 @@ const Main = () => {
     history.push('/cart')
   }
 
-//   if(!login) {
-//       return <div>Debes iniciar sesion</div>
-//   }
+  const onLogout = () => {
+    setLogin(null)
+  }
+
+  if(!login) {
+      return <div>Debes iniciar sesion</div>
+  }
 
     return ( <div className={classes.root}>
         <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
@@ -150,6 +154,11 @@ const Main = () => {
               <ShoppingBasketIcon />
             </Badge>
           </IconButton>
+          <IconButton color="inherit" onClick={onLogout}>
+            <Badge color="secondary">
+              <ExitToAppIcon />
+            </Badge>
+          </IconButton>
             </Toolbar>
         </AppBar>
 
@@ -166,6 +175,8 @@ const Main = () => {
           </IconButton>
         </div>
         <Divider />
+        {
+            login.tipo === 'editor' && (
         <List>
             <ListItem>
             <ListItemIcon>
@@ -178,7 +189,11 @@ const Main = () => {
             </Link>
             </ListItem>
         </List>
+            )
+}
         <Divider />
+        {
+            login.tipo === 'administrador' && (
         <List>
         <ListItem>
             <ListItemIcon>
@@ -189,7 +204,10 @@ const Main = () => {
             <Link to="/users">
                 <ListItemText primary="Users" />
             </Link>
-        </ListItem></List>
+        </ListItem>
+        </List>
+            )
+        }
         <List>
         <ListItem>
             <ListItemIcon>
