@@ -18,9 +18,10 @@ db = client[str(db_name)]
 col = db["ordenes"]
 @app.route("/ordenes", methods=["DELETE"])
 def create():
-    usuario = request.form["usuario"]
+    data = request.get_json()
+    usuario = data["usuario"]
     col.delete_one({'usuario': usuario, 'estado':"0"})
-    return {"mensaje":"Usuario eliminado"}
+    return {"mensaje":"Orden eliminada"}
 
 @app.route("/")
 def main():

@@ -21,11 +21,12 @@ col = db["ordenes"]
 
 @app.route("/ordenes", methods=["PUT"])
 def create():
-    usuario = request.form["usuario"]
-    estado = request.form.get("estado","0")
-    libros = json.loads(request.form["libros"])
-    pago = request.form["tipoPago"]
-    envio = request.form["tipoEnvio"]
+    data = request.get_json()
+    usuario = data["usuario"]
+    estado = data.get("estado","0")
+    libros = data["libros"]
+    pago = data["tipoPago"]
+    envio = data["tipoEnvio"]
     existe = col.find_one({'usuario': usuario, 'estado':"0"})
     if existe:
         Qid = ObjectId(existe['_id'])
