@@ -41,7 +41,7 @@ const UserForm = () => {
     const classes = useStyles();
     const formik = useFormik({
       initialValues: {
-        tipo: 'usuario',
+        tipo: 'cliente',
         nombre: '',
         apellido: '',
         correo: '',

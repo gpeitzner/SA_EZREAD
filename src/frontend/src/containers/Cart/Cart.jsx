@@ -83,11 +83,19 @@ const Cart = () => {
 
     const createOrder = async () => {
         const values = {
-            usuario: login.id,
+            usuario: login._id,
             tipoPago: paymentType,
             tipoEnvio: shippingType,
-            libros: cart
+            libros: Object.keys(cart).map(key => {
+                const book = { ...cart[key] }
+                return {
+                    id: book.id,
+                    cantidad: `${book.quantity}`,
+                    precio: `${book.Precio}`,
+                }
+            })
         }
+        console.log({values, login})
         const { status, data } = await axios.post(CREATE_URL, values)
         if (status === 200) {
             alert(data.mensaje)
