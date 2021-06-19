@@ -3,8 +3,10 @@ from bson.objectid import ObjectId
 import os
 import pymongo
 import json
+from flask_cors import CORS
 #EDITAR
 app = Flask(__name__)
+CORS(app)
 
 db_host = os.environ["db_host"] if "db_host" in os.environ else "localhost"
 db_password = os.environ["db_password"] if "db_password" in os.environ else ""
@@ -19,14 +21,17 @@ col = db["ordenes"]
 
 @app.route("/ordenes", methods=["PUT"])
 def create():
-    usuario = request.form["usuario"]
-    estado = request.form.get("estado","0")
-    libros = json.loads(request.form["libros"])
+    data = request.get_json()
+    usuario = data["usuario"]
+    estado = data.get("estado","0")
+    libros = data["libros"]
+    pago = data["tipoPago"]
+    envio = data["tipoEnvio"]
     existe = col.find_one({'usuario': usuario, 'estado':"0"})
     if existe:
         Qid = ObjectId(existe['_id'])
         myquery = { "_id": Qid }
-        newvalues = { "$set": {"usuario":usuario,"estado":estado,"libros":libros} }
+        newvalues = { "$set": {"usuario":usuario,"estado":estado,"libros":libros, "tipoPago":pago, "tipoEnvio":envio} }
         col.update_one(myquery,newvalues)  
         return {"mensaje":"Orden modificada"}
     else:
@@ -36,5 +41,5 @@ def create():
 def main():
     return "<p>orden_editar</p>"
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0",debug=True,port=5003)
+#if __name__ == "__main__":
+    #app.run(host="0.0.0.0",debug=True,port=5011)

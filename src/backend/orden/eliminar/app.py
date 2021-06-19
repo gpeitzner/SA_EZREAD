@@ -2,9 +2,10 @@ from flask import Flask, request
 from bson.objectid import ObjectId
 import os
 import pymongo
+from flask_cors import CORS
 #ELIMINAR
 app = Flask(__name__)
-
+CORS(app)
 db_host = os.environ["db_host"] if "db_host" in os.environ else "localhost"
 db_password = os.environ["db_password"] if "db_password" in os.environ else ""
 db_port = int(os.environ["db_port"]) if "db_port" in os.environ else 27017
@@ -17,13 +18,14 @@ db = client[str(db_name)]
 col = db["ordenes"]
 @app.route("/ordenes", methods=["DELETE"])
 def create():
-    usuario = request.form["usuario"]
+    data = request.get_json()
+    usuario = data["usuario"]
     col.delete_one({'usuario': usuario, 'estado':"0"})
-    return {"mensaje":"Usuario eliminado"}
+    return {"mensaje":"Orden eliminada"}
 
 @app.route("/")
 def main():
     return "<p>orden_eliminar</p>"
     
-if __name__ == "__main__":
-    app.run(host="0.0.0.0",debug=True,port=5004)
+#if __name__ == "__main__":
+    #app.run(host="0.0.0.0",debug=True,port=5012)
