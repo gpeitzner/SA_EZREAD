@@ -5,8 +5,8 @@ cd_host = os.environ["CD_HOST"]
 
 Connection(cd_host).run('export DEBIAN_FRONTEND=noninteractive')
 Connection(cd_host).run('sudo apt update')
-Connection(cd_host).run('sudo apt upgrade')
-Connection(cd_host).run('sudo apt autoremove')
+Connection(cd_host).run('sudo apt upgrade -y')
+Connection(cd_host).run('sudo apt autoremove -y')
 
 Connection(cd_host).run('sudo apt-get update')
 Connection(cd_host).run('sudo apt-get install \
