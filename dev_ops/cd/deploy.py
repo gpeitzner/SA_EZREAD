@@ -1,7 +1,9 @@
 import os
 from fabric import Connection
 
+
 cd_host = os.environ["CD_HOST"]
+
 
 try:
     Connection(cd_host).run('docker-compose -f ./docker-compose-prod.yml down')
@@ -42,6 +44,8 @@ try:
     Connection(cd_host).run('docker rmi -f $(docker images -a -q)')
 except:
     print("registry has not images")
+
+
 try:
     Connection(cd_host).run("rm ./docker-compose-prod.yml")
 except:
@@ -61,12 +65,6 @@ try:
     Connection(cd_host).put("./.env-prod", "./.env-prod")
 except:
     print("env-prod already exists")
-
-
-try:
-    Connection(cd_host).run('docker-compose -f ./docker-compose-prod.yml pull')
-except:
-    print("Stack updated")
 try:
     Connection(cd_host).run(
         'docker-compose -f ./docker-compose-prod.yml up -d')
