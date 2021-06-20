@@ -20,7 +20,7 @@ col = db["usuarios"]
 
 
 class Usuario:
-    def __init__(self, nombre, apellido, correo, password, telefono, direccion,activo):
+    def __init__(self, nombre, apellido, correo, password, telefono, direccion, activo):
         self.nombre = nombre
         self.apellido = apellido
         self.correo = correo
@@ -56,13 +56,14 @@ def edit():
     data = request.get_json()
     id = data["id"]
     nombre = data["nombre"]
-    apellido = data.get("apellido", "")
+    apellido = data["apellido"]
     correo = data["correo"]
-    password = data.get("password", "")
-    telefono = data.get("telefono", "")
-    direccion = data.get("direccion", "")
-    activo = data.get("activo","1")
-    new_user = Usuario(nombre, apellido, correo, password, telefono, direccion,activo)
+    password = data["password"]
+    telefono = data["telefono"]
+    direccion = data["direccion"]
+    activo = data["activo"]
+    new_user = Usuario(nombre, apellido, correo, password,
+                       telefono, direccion, activo)
 
     Qid = ObjectId(id)
     myquery = {"_id": Qid}

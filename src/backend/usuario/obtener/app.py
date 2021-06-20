@@ -23,9 +23,18 @@ col = db["usuarios"]
 def obtener():
     users = []
     for user in col.find():
-        if str(user['tipo']!="administrador"):
-            users.append({"id": str(user['_id']), "nombre": str(user['nombre']), "apellido": str(
-                user['apellido']), "correo": str(user['correo']), "telefono": str(user['telefono']), "direccion": str(user['direccion']), "tipo": str(user['tipo']), "activo": str(user['activo'])})
+        if str(user['tipo'] != "administrador"):
+            users.append({
+                "id": str(user['_id']),
+                "nombre": str(user['nombre']),
+                "apellido": str(user['apellido']),
+                "correo": str(user['correo']),
+                "telefono": str(user['telefono']),
+                "direccion": str(user['direccion']),
+                "tipo": str(user['tipo']),
+                "activo": str(user['activo']),
+                "password": str(user['password'])
+            })
     return {'users': users}
 
 
@@ -33,8 +42,17 @@ def obtener():
 def obtenerUser(id):
     user = col.find_one({'_id': ObjectId(id)})
     if user:
-        return{"id": str(user['_id']), "nombre": str(user['nombre']), "apellido": str(
-            user['apellido']), "correo": str(user['correo']), "telefono": str(user['telefono']), "direccion": str(user['direccion']), "tipo": str(user['tipo']), "activo": str(user['activo'])}
+        return{
+            "id": str(user['_id']),
+            "nombre": str(user['nombre']),
+            "apellido": str(user['apellido']),
+            "correo": str(user['correo']),
+            "telefono": str(user['telefono']),
+            "direccion": str(user['direccion']),
+            "tipo": str(user['tipo']),
+            "activo": str(user['activo']),
+            "password": str(user['password'])
+        }
     else:
         return {"mensaje": "Usuario no existe"}
 
