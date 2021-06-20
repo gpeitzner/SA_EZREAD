@@ -5,6 +5,7 @@ import pymongo
 from bson.objectid import ObjectId
 from bson.json_util import dumps
 from flask_cors import CORS
+from datetime import datetime
 
 app = Flask(__name__)
 CORS(app)
@@ -19,6 +20,7 @@ client = pymongo.MongoClient(
     host=db_host, port=db_port, username=db_user, password=db_password)
 db = client[str(db_name)]
 col = db["libros"]
+logs = db["logs"]
 
 
 @app.route("/")
@@ -31,15 +33,31 @@ def actualizar():
     if request.method == 'DELETE':
         idDoc = request.args.get("id")
         cant = 0
-        resultado = col.update_one(
-            {
-                "_id": ObjectId(idDoc)
-            },
-            {
-                '$set': {
-                    "Activo": 0
-                }
-            })
-        cant = cant + resultado.modified_count
+        libro = col.find_one({'_id': ObjectId(idDoc)})
 
-        return {"eliminado": cant} # 0--> no hubo cambios 1--> cambio de estado 1 a 0 
+        if libro:
+            resultado = col.update_one(
+                {
+                    "_id": ObjectId(idDoc)
+                },
+                {
+                    '$set': {
+                        "Activo": 0
+                    }
+                })
+            cant = cant + resultado.modified_count
+
+            if cant > 0:
+                now = datetime.now()
+                logs.insert_one({
+                    "Operacion": "Eliminación",
+                    "Libro": libro["Titulo"],
+                    "Editorial": libro["Editorial"],
+                    "Descripcion": "Se elimino el libro de stock",
+                    "Fecha:": '{}-{}-{} {}:{}:{}'.format(now.day, now.month, now.year, now.hour, now.minute, now.second)
+
+                })
+            # 0--> no hubo cambios 1--> cambio de estado 1 a 0
+            return {"eliminado": cant}
+        else:
+            return {"eliminado": 0}
