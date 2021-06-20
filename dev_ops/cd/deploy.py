@@ -36,8 +36,12 @@ Connection(cd_host).run('newgrp docker')
 Connection(cd_host).run(
     'sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose')
 Connection(cd_host).run('sudo chmod +x /usr/local/bin/docker-compose')
-Connection(cd_host).run('docker rmi -f $(docker images -a -q)')
 
+
+try:
+    Connection(cd_host).run('docker rmi -f $(docker images -a -q)')
+except:
+    print("registry has not images")
 try:
     Connection(cd_host).run("rm ./docker-compose-prod.yml")
 except:
