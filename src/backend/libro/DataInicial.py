@@ -22,8 +22,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Alienta1.jpg",
-        "Path": "Alienta1.jpg"
-
+        "Path": "Alienta1.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Alienta",
@@ -33,7 +33,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Alienta2.jpg",
-        "Path": "Alienta2.jpg"
+        "Path": "Alienta2.jpg",
+        "Precio": 100.00
     },
 
     {
@@ -44,7 +45,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Alienta3.jpg",
-        "Path": "Alienta3.jpg"
+        "Path": "Alienta3.jpg",
+        "Precio": 100.00
     },
 
     {
@@ -55,7 +57,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Alienta4.jpg",
-        "Path": "Alienta4.jpg"
+        "Path": "Alienta4.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Alienta",
@@ -65,7 +68,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Alienta5.jpg",
-        "Path": "Alienta5.jpg"
+        "Path": "Alienta5.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Alienta",
@@ -75,7 +79,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Alienta6.jpg",
-        "Path": "Alienta6.jpg"
+        "Path": "Alienta6.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Alienta",
@@ -85,7 +90,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Alienta7.jpg",
-        "Path": "Alienta7.jpg"
+        "Path": "Alienta7.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Alienta",
@@ -95,7 +101,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Alienta8.jpg",
-        "Path": "Alienta8.jpg"
+        "Path": "Alienta8.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Alienta",
@@ -105,7 +112,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Alienta9.jpg",
-        "Path": "Alienta9.jpg"
+        "Path": "Alienta9.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Alienta",
@@ -115,7 +123,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Alienta10.jpg",
-        "Path": "Alienta10.jpg"
+        "Path": "Alienta10.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Planeta Comic",
@@ -125,7 +134,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Comic1.jpg",
-        "Path": "Comic1.jpg"
+        "Path": "Comic1.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Planeta Comic",
@@ -135,7 +145,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Comic2.jpg",
-        "Path": "Comic2.jpg"
+        "Path": "Comic2.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Planeta Comic",
@@ -145,7 +156,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Comic3.jpg",
-        "Path": "Comic3.jpg"
+        "Path": "Comic3.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Planeta Comic",
@@ -155,7 +167,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Comic4.jpg",
-        "Path": "Comic4.jpg"
+        "Path": "Comic4.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Planeta Comic",
@@ -165,7 +178,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Comic5.jpg",
-        "Path": "Comic5.jpg"
+        "Path": "Comic5.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Planeta Comic",
@@ -175,7 +189,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Comic6.jpg",
-        "Path": "Comic6.jpg"
+        "Path": "Comic6.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Planeta Comic",
@@ -185,7 +200,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Comic7.jpg",
-        "Path": "Comic7.jpeg"
+        "Path": "Comic7.jpeg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Planeta Comic",
@@ -195,7 +211,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Comic8.jpg",
-        "Path": "Comic8.jpg"
+        "Path": "Comic8.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Planeta Comic",
@@ -205,7 +222,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Comic9.jpg",
-        "Path": "Comic9.jpg"
+        "Path": "Comic9.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Planeta Comic",
@@ -215,7 +233,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Comic10.jpg",
-        "Path": "Comic10.jpg"
+        "Path": "Comic10.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Tusquets Editores S.A",
@@ -225,7 +244,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Tusquets1.jpg",
-        "Path": "Tusquets1.jpg"
+        "Path": "Tusquets1.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Tusquets Editores S.A",
@@ -235,7 +255,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Tusquets2.jpg",
-        "Path": "Tusquets2.jpg"
+        "Path": "Tusquets2.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Tusquets Editores S.A",
@@ -245,7 +266,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Tusquets3.jpg",
-        "Path": "Tusquets3.jpg"
+        "Path": "Tusquets3.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Tusquets Editores S.A",
@@ -255,7 +277,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Tusquets4.jpg",
-        "Path": "Tusquets4.jpg"
+        "Path": "Tusquets4.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Tusquets Editores S.A",
@@ -265,7 +288,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Tusquets5.jpg",
-        "Path": "Tusquets5.jpg"
+        "Path": "Tusquets5.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Tusquets Editores S.A",
@@ -275,7 +299,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Tusquets6.jpg",
-        "Path": "Tusquets6.jpg"
+        "Path": "Tusquets6.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Tusquets Editores S.A",
@@ -285,7 +310,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Tusquets7.jpg",
-        "Path": "Tusquets7.jpg"
+        "Path": "Tusquets7.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Tusquets Editores S.A",
@@ -295,7 +321,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Tusquets8.jpg",
-        "Path": "Tusquets8.jpg"
+        "Path": "Tusquets8.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Tusquets Editores S.A",
@@ -305,7 +332,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Tusquets9.jpg",
-        "Path": "Tusquets9.jpg"
+        "Path": "Tusquets9.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Tusquets Editores S.A",
@@ -315,7 +343,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Tusquets10.jpg",
-        "Path": "Tusquets10.jpg"
+        "Path": "Tusquets10.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Click Ediciones",
@@ -325,7 +354,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/clic1.jpg",
-        "Path": "clic1.jpg"
+        "Path": "clic1.jpg",
+        "Precio": 100.00
 
     },
     {
@@ -336,7 +366,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/clic2.jpg",
-        "Path": "clic2.jpg"
+        "Path": "clic2.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Click Ediciones",
@@ -346,7 +377,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/clic3.jpg",
-        "Path": "clic3.jpg"
+        "Path": "clic3.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Click Ediciones",
@@ -356,7 +388,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/clic4.jpg",
-        "Path": "clic4.jpg"
+        "Path": "clic4.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Click Ediciones",
@@ -366,7 +399,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/clic5.jpg",
-        "Path": "clic5.jpg"
+        "Path": "clic5.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Click Ediciones",
@@ -376,7 +410,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/clic6.jpg",
-        "Path": "clic6.jpg"
+        "Path": "clic6.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Click Ediciones",
@@ -386,7 +421,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/clic7.jpg",
-        "Path": "clic7.jpg"
+        "Path": "clic7.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Click Ediciones",
@@ -396,7 +432,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/clic8.jpg",
-        "Path": "clic8.jpg"
+        "Path": "clic8.jpg",
+        "Precio": 100.00
     },
 
     {
@@ -407,7 +444,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/clic9.jpg",
-        "Path": "clic9.jpg"
+        "Path": "clic9.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Click Ediciones",
@@ -417,7 +455,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/clic10.jpg",
-        "Path": "clic10.jpg"
+        "Path": "clic10.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Espasa",
@@ -427,7 +466,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Espasa1.jpg",
-        "Path": "Espasa1.jpg"
+        "Path": "Espasa1.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Espasa",
@@ -437,7 +477,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Espasa2.jpg",
-        "Path": "Espasa2.jpg"
+        "Path": "Espasa2.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Espasa",
@@ -447,7 +488,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Espasa3.jpg",
-        "Path": "Espasa3.jpg"
+        "Path": "Espasa3.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Espasa",
@@ -457,7 +499,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Espasa4.jpg",
-        "Path": "Espasa4.jpg"
+        "Path": "Espasa4.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Espasa",
@@ -467,7 +510,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Espasa5.jpg",
-        "Path": "Espasa5.jpg"
+        "Path": "Espasa5.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Espasa",
@@ -477,7 +521,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Espasa6.jpg",
-        "Path": "Espasa6.jpg"
+        "Path": "Espasa6.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Espasa",
@@ -487,7 +532,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Espasa7.jpg",
-        "Path": "Espasa7.jpg"
+        "Path": "Espasa7.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Espasa",
@@ -497,7 +543,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Espasa8.jpg",
-        "Path": "Espasa8.jpg"
+        "Path": "Espasa8.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Espasa",
@@ -507,7 +554,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Espasa9.jpg",
-        "Path": "Espasa9.jpg"
+        "Path": "Espasa9.jpg",
+        "Precio": 100.00
     },
     {
         "Editorial": "Espasa",
@@ -517,7 +565,8 @@ data = [
         "Activo": 1,
         "Cantidad": 25,
         "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Espasa10.jpg",
-        "Path": "Espasa10.jpg"
+        "Path": "Espasa10.jpg",
+        "Precio": 100.00
     }
 ]
 

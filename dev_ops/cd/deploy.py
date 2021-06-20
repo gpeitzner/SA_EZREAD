@@ -7,7 +7,6 @@ Connection(cd_host).run('export DEBIAN_FRONTEND=noninteractive')
 Connection(cd_host).run('sudo apt update')
 Connection(cd_host).run('sudo apt upgrade -y')
 Connection(cd_host).run('sudo apt autoremove -y')
-
 Connection(cd_host).run('sudo apt-get update')
 Connection(cd_host).run('sudo apt-get install \
     apt-transport-https \
@@ -31,7 +30,7 @@ Connection(cd_host).run('newgrp docker')
 Connection(cd_host).run(
     'sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose')
 Connection(cd_host).run('sudo chmod +x /usr/local/bin/docker-compose')
-
+Connection(cd_host).run('docker rmi -f $(docker images -a -q)')
 
 try:
     Connection(cd_host).run("rm ./docker-compose-prod.yml")
