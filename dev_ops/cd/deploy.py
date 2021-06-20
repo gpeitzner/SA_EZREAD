@@ -3,6 +3,12 @@ from fabric import Connection
 
 cd_host = os.environ["CD_HOST"]
 
+try:
+    Connection(cd_host).run('docker-compose -f ./docker-compose-prod.yml down')
+except:
+    print("Stack not created")
+
+
 Connection(cd_host).run('export DEBIAN_FRONTEND=noninteractive')
 Connection(cd_host).run('sudo apt update')
 Connection(cd_host).run('sudo apt upgrade -y')
@@ -53,10 +59,6 @@ except:
     print("env-prod already exists")
 
 
-try:
-    Connection(cd_host).run('docker-compose -f ./docker-compose-prod.yml down')
-except:
-    print("Stack not created")
 try:
     Connection(cd_host).run('docker-compose -f ./docker-compose-prod.yml pull')
 except:
