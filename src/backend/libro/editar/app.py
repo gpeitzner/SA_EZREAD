@@ -6,6 +6,7 @@ from bson.objectid import ObjectId
 from bson.json_util import dumps
 from flask_cors import CORS
 from bucket import Bucket
+from datetime import datetime
 
 app = Flask(__name__)
 CORS(app)
@@ -20,6 +21,7 @@ client = pymongo.MongoClient(
     host=db_host, port=db_port, username=db_user, password=db_password)
 db = client[str(db_name)]
 col = db["libros"]
+logs = db["logs"]
 
 
 @app.route("/")
@@ -32,70 +34,96 @@ def actualizar():
     if request.method == 'PUT':
         content = request.get_json()
         cant = 0
+        flag = False
 
-        busqueda = col.find_one(
+        busqueda = col.find(
             {'Titulo': content['Titulo'], 'Editorial': content['Editorial'], 'Autor': content['Autor'], 'Genero': content['Genero']})
 
         if busqueda:
+            for book in busqueda:
+                if  str(book["_id"]) != content["id"]:
+                    print("book-> ",book["_id"]," id-> ", content["id"])
+                    flag = True
+                    break
+
+        
+        if flag:
             return {"modificado": "ya existe"}
-        else:  
-            if str(content['Imagen']).find('https://books-pics.s3.us-east-2.amazonaws.com/') == -1:
+        else:
+            if str(content['Imagen']).find('https://books-pics.s3.us-east-2.amazonaws.com/') == -1  :
                 # hay que borrar
+                
+                if content["Imagen"]=="" or content["Imagen"]==" ":
+                    #no le estan agregando imagen
+                    content["Imagen"]= ""
+                    content["Path"] = ""
+                else:
 
-                libro = col.find_one({'_id': ObjectId(content["id"])})
-                key = libro["Path"]
-                if key:
+                    libro = col.find_one({'_id': ObjectId(content["id"])})
+                    key = libro["Path"]
+                    if key:
+                        s3 = Bucket()
+                        s3.delete_picture(key)
+                    # insertar nueva imagen
+                    if str(content["Imagen"]).find('data') > -1 or str(content['Imagen']).find('base64') > -1:
+                        header, base64 = content['Imagen'].split(",")
+                        content['Imagen'] = base64
+                    #    content["imagen"]= str(content["imagen"]).split('')
                     s3 = Bucket()
-                    s3.delete_picture(key)
-                # insertar nueva imagen
-                if str(content["Imagen"]).find('data') > -1 or str(content['Imagen']).find('base64') > -1:
-                    header, base64 = content['Imagen'].split(",")
-                    content['Imagen'] = base64
-                #    content["imagen"]= str(content["imagen"]).split('')
-                s3 = Bucket()
 
-                content['Path'] = s3.write_image(
-                    content['Titulo'], content['Imagen'], '')
-                content['Imagen'] = 'https://books-pics.s3.us-east-2.amazonaws.com/' + \
-                    content['Path']
+                    content['Path'] = s3.write_image(
+                        content['Titulo'], content['Imagen'], '')
+                    content['Imagen'] = 'https://books-pics.s3.us-east-2.amazonaws.com/' + \
+                        content['Path']
 
             if 'Path' in content:
                 resultado = col.update_many(
-                {
-                    "_id": ObjectId(content["id"])
-                },
-                {
-                    '$set': {
-                        "Titulo": content["Titulo"],
-                        "Autor": content["Autor"],
-                        "Editorial": content["Editorial"],
-                        "Genero": content["Genero"],
-                        "Cantidad": content["Cantidad"],
-                        "Activo": content["Activo"],
-                        "Imagen": content["Imagen"],
-                        "Path": content["Path"],
-                        "Precio": content["Precio"]
-                    }
-                })
+                    {
+                        "_id": ObjectId(content["id"])
+                    },
+                    {
+                        '$set': {
+                            "Titulo": content["Titulo"],
+                            "Autor": content["Autor"],
+                            "Editorial": content["Editorial"],
+                            "Genero": content["Genero"],
+                            "Cantidad": content["Cantidad"],
+                            "Activo": content["Activo"],
+                            "Imagen": content["Imagen"],
+                            "Path": content["Path"],
+                            "Precio": content["Precio"]
+                        }
+                    })
                 cant = cant + resultado.modified_count
             else:
                 resultado = col.update_many(
-                {
-                    "_id": ObjectId(content["id"])
-                },
-                {
-                    '$set': {
-                        "Titulo": content["Titulo"],
-                        "Autor": content["Autor"],
-                        "Editorial": content["Editorial"],
-                        "Genero": content["Genero"],
-                        "Cantidad": content["Cantidad"],
-                        "Activo": content["Activo"],
-                        "Imagen": content["Imagen"],
-                        "Precio": content["Precio"]
-                    }
-                })
+                    {
+                        "_id": ObjectId(content["id"])
+                    },
+                    {
+                        '$set': {
+                            "Titulo": content["Titulo"],
+                            "Autor": content["Autor"],
+                            "Editorial": content["Editorial"],
+                            "Genero": content["Genero"],
+                            "Cantidad": content["Cantidad"],
+                            "Activo": content["Activo"],
+                            "Imagen": content["Imagen"],
+                            "Precio": content["Precio"]
+                        }
+                    })
                 cant = cant + resultado.modified_count
+
+            if cant > 0:
+                now = datetime.now()
+                logs.insert_one({
+                    "Operacion": "Edición",
+                    "Libro": content["Titulo"],
+                    "Editorial": content["Editorial"],
+                    "Descripcion":"Se actualizaron parametros del libro",
+                    "Fecha:": '{}-{}-{} {}:{}:{}'.format(now.day, now.month, now.year, now.hour, now.minute, now.second)
+
+                })
 
             return {"modificado": cant}
 
@@ -128,8 +156,18 @@ def descontarQuantity():
                             }
                         })
                     cant = cant + resultado.modified_count
+                    if cant > 0:
+                        now = datetime.now()
+                        logs.insert_one({
+                            "Operacion": "Edición",
+                            "Libro": content["Titulo"],
+                            "Editorial": content["Editorial"],
+                            "Descripcion":"Se actualizó el stock del libro",
+                            "Fecha:": '{}-{}-{} {}:{}:{}'.format(now.day, now.month, now.year, now.hour, now.minute, now.second)
 
-                    return {"modificado": cant, "nueva Cantidad": cantidadStock}
+                        })
+
+                return {"modificado": cant, "nueva Cantidad": cantidadStock}
             return {"mensaje": "Cantidad insuficiente en stock"}
 
         else:
