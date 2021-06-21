@@ -2,7 +2,8 @@
 pipeline {
     agent any
     environment {
-        CD_HOST     = credentials('CD_HOST')
+        CD_HOST1     = credentials('CD_HOST1')
+        CD_HOST2     = credentials('CD_HOST2')
     }
     stages {
         stage('Deploying') {

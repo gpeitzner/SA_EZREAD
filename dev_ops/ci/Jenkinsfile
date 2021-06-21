@@ -1,9 +1,6 @@
 /* groovylint-disable CompileStatic, DuplicateStringLiteral, LineLength */
 pipeline {
     agent any
-    environment {
-        CD_HOST     = credentials('CD_HOST')
-    }
     stages {
         stage('Unit Testing') {
             steps {

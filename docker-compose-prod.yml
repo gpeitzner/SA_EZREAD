@@ -1,14 +1,5 @@
 version: "3.1"
 services:
-  db:
-    image: mongo:latest
-    restart: always
-    env_file:
-      - ./.env-prod
-    ports:
-      - 27017:27017
-    volumes:
-      - ./mongo-prod-data:/data/db
   login:
     image: gpeitzner/ezread_login:latest
     restart: always
