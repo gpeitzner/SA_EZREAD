@@ -22,6 +22,7 @@ pipeline {
                 sh 'docker push gpeitzner/ezread_libro_editar:latest'
                 sh 'docker push gpeitzner/ezread_libro_eliminar:latest'
                 sh 'docker push gpeitzner/ezread_libro_obtener:latest'
+                sh 'docker push gpeitzner/ezread_libro_solicitar:latest'
                 sh 'docker push gpeitzner/ezread_orden_crear:latest'
                 sh 'docker push gpeitzner/ezread_orden_editar:latest'
                 sh 'docker push gpeitzner/ezread_orden_eliminar:latest'

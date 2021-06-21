@@ -70,6 +70,13 @@ services:
       - ./.env-test
     ports:
       - 5009:5009
+  libro_solicitar:
+    image: gpeitzner/ezread_libro_solicitar:latest
+    restart: always
+    env_file:
+      - ./.env-test
+    ports:
+      - 5014:5014
   orden_crear:
     image: gpeitzner/ezread_orden_crear:latest
     restart: always

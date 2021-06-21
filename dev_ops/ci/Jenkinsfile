@@ -31,6 +31,7 @@ pipeline {
                 sh 'docker build --force-rm --no-cache --tag gpeitzner/ezread_libro_editar:latest ./src/backend/libro/editar/'
                 sh 'docker build --force-rm --no-cache --tag gpeitzner/ezread_libro_eliminar:latest ./src/backend/libro/eliminar/'
                 sh 'docker build --force-rm --no-cache --tag gpeitzner/ezread_libro_obtener:latest ./src/backend/libro/obtener/'
+                sh 'docker build --force-rm --no-cache --tag gpeitzner/ezread_libro_solicitar:latest ./src/backend/libro/solicitar/'
                 echo 'Building order microservices ...'
                 sh 'docker build --force-rm --no-cache --tag gpeitzner/ezread_orden_crear:latest ./src/backend/orden/crear/'
                 sh 'docker build --force-rm --no-cache --tag gpeitzner/ezread_orden_editar:latest ./src/backend/orden/editar/'

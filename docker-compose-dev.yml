@@ -72,6 +72,13 @@ services:
       - ./.env-dev
     ports:
       - 5009:5009
+  libro_solicitar:
+    image: ezread_libro_solicitar:latest
+    restart: always
+    env_file:
+      - ./.env-dev
+    ports:
+      - 5014:5014
   orden_crear:
     image: ezread_orden_crear:latest
     restart: always
