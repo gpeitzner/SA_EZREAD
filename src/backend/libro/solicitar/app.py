@@ -20,10 +20,10 @@ db_name = os.environ["db_name"] if "db_name" in os.environ else "ezread"
 db_user = os.environ["db_user"] if "db_user" in os.environ else ""
 
 
-s3_bucket_name = os.environ["s3_bucket_name"] if "s3_bucket_name" in os.environ else "ezreadbooks"
-s3_region_name = os.environ["s3_region_name"] if "s3_region_name" in os.environ else "us-east-2"
-s3_access_key_id = os.environ["s3_access_key_id"] if "s3_access_key_id" in os.environ else "AKIA5M3XKPWMV52UFDDV"
-s3_access_key = os.environ["s3_access_key"] if "s3_access_key" in os.environ else "sznbyk/NprIT1zpdpjH21wq1yXCTV7W88Wrsiex+"
+s3_bucket_name = os.environ["s3_bucket_name"] if "s3_bucket_name" in os.environ else ""
+s3_region_name = os.environ["s3_region_name"] if "s3_region_name" in os.environ else ""
+s3_access_key_id = os.environ["s3_access_key_id"] if "s3_access_key_id" in os.environ else ""
+s3_access_key = os.environ["s3_access_key"] if "s3_access_key" in os.environ else ""
 
 
 s3 = boto3.client(
