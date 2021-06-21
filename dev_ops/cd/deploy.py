@@ -15,6 +15,7 @@ SerialGroup(cd_host1, cd_host2).run('export DEBIAN_FRONTEND=noninteractive')
 SerialGroup(cd_host1, cd_host2).run('sudo apt update')
 SerialGroup(cd_host1, cd_host2).run('sudo apt upgrade -y')
 SerialGroup(cd_host1, cd_host2).run('sudo apt autoremove -y')
+SerialGroup(cd_host1, cd_host2).run('sudo apt-get remove docker docker-engine docker.io containerd runc -y')
 SerialGroup(cd_host1, cd_host2).run('sudo apt-get update')
 SerialGroup(cd_host1, cd_host2).run('sudo apt-get install \
     apt-transport-https \
@@ -24,7 +25,7 @@ SerialGroup(cd_host1, cd_host2).run('sudo apt-get install \
     lsb-release -y')
 try:
     SerialGroup(cd_host1, cd_host2).run(
-        'curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg')
+        'curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --batch --yes --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg')
     SerialGroup(cd_host1, cd_host2).run('echo \
     "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
     $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null')
