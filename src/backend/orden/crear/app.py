@@ -1,12 +1,10 @@
 from flask import Flask, request
-from bson.objectid import ObjectId
 import os
 import pymongo
 from flask_cors import CORS
-import json
 import smtplib
 from datetime import datetime, date
-from pyinvoice.models import InvoiceInfo, ServiceProviderInfo, ClientInfo, Item, Transaction
+from pyinvoice.models import InvoiceInfo, ServiceProviderInfo, ClientInfo, Item
 from pyinvoice.templates import SimpleInvoice
 #CREAR
 app = Flask(__name__)
@@ -130,5 +128,5 @@ def crearfactura(nombre, correo, libros):
 def main():
     return "<p>orden_crear</p>"
 
-#if __name__ == "__main__":
-    #app.run(host="0.0.0.0",debug=True,port=5010)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0",debug=True,port=5010)
