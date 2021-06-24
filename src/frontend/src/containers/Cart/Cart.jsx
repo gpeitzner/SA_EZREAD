@@ -86,6 +86,8 @@ const Cart = () => {
             usuario: login._id,
             tipoPago: paymentType,
             tipoEnvio: shippingType,
+            nombreUsuario: login.nombre,
+            correoUsuario: login.correo,
             libros: Object.keys(cart).map(key => {
                 const book = { ...cart[key] }
                 return {
