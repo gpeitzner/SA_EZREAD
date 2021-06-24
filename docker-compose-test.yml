@@ -7,6 +7,8 @@ services:
       - ./.env-test
     ports:
       - 27017:27017
+    volumes:
+      - ./e2e/data.js:/docker-entrypoint-initdb.d/data.js
   login:
     image: gpeitzner/ezread_login:latest
     restart: always

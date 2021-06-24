@@ -10,9 +10,11 @@ import time
 class test1(unittest.TestCase):
 
     def setUp(self):
+        HUB_URL = "localhost"
+        HOST_URL = "192.168.1.100"
         self.driver = webdriver.Remote(
-            command_executor="http://localhost:4444/wd/hub", desired_capabilities=DesiredCapabilities.FIREFOX)
-        self.driver.get("http://192.168.1.100:8080/login")
+            command_executor="http://"+HUB_URL+":4444/wd/hub", desired_capabilities=DesiredCapabilities.FIREFOX)
+        self.driver.get("http://"+HOST_URL+":8080/login")
         time.sleep(5)
 
     def test1(self):
