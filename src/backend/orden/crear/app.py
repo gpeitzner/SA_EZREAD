@@ -4,6 +4,10 @@ import os
 import pymongo
 from flask_cors import CORS
 import json
+import smtplib
+from datetime import datetime, date
+from pyinvoice.models import InvoiceInfo, ServiceProviderInfo, ClientInfo, Item, Transaction
+from pyinvoice.templates import SimpleInvoice
 #CREAR
 app = Flask(__name__)
 CORS(app)
@@ -39,6 +43,8 @@ class Orden:
 def create():
     data = request.get_json()
     usuario = data["usuario"]
+    nombreUsuario=data["nombreUsuario"]
+    correoUsuario=data["correoUsuario"]
     estado = data.get("estado","0")
     #libros = json.loads(request.form["libros"])
     libros = data["libros"]
@@ -58,7 +64,68 @@ def create():
     else: #Se crea
         nuevaorden = Orden(usuario,estado,libros,pago,envio)
         ret = col.insert_one(nuevaorden.toJson())
+        crearfactura(nombreUsuario,correoUsuario,libros)
+        enviarFactura(mensaje="Se genero la nueva factura y se envio",correo_destino=correoUsuario)
         return {"mensaje":"Orden creada","id":str(ret.inserted_id)}
+
+@app.route("/factura", methods=["GET"])
+def getFactura():
+    #CODIGO PARA GENERAR factura en pdf
+    libros=  [{ 'id': "123123", 'cantidad': "1", 'precio': "123"},{ 'id': "456456", 'cantidad': "3", 'precio':"456"}]
+    crearfactura("Juan perez","esthuardo12@gmail.com",libros)
+    enviarFactura(mensaje="Se genero la nueva factura y se envio",correo_destino="esthuardo12@gmail.com")
+    return {"mensaje":"Proceso terminado"}
+
+def enviarFactura(mensaje,correo_destino):
+    #import email
+    from email.mime.application import MIMEApplication
+    from email.mime.multipart import MIMEMultipart
+    from email.mime.text import MIMEText
+
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.starttls()
+    
+    server.login('ezreadcorp@gmail.com', 'ezread123')
+    msg = MIMEMultipart()
+
+    message = mensaje
+    msg['Subject'] = "Factura de Compra EZREAD"
+    msg['From'] = 'ezreadcorp@gmail.com'
+    msg['To'] = correo_destino
+    msg.attach(MIMEText(message, "plain"))
+    with open("./factura.pdf", "rb") as f:
+        attach = MIMEApplication(f.read(),_subtype="pdf")
+    attach.add_header('Content-Disposition','attachment',filename=str("FacturaElectronica.pdf"))
+    msg.attach(attach)
+    server.send_message(msg)
+
+def crearfactura(nombre, correo, libros):
+    doc = SimpleInvoice('factura.pdf')
+    # Paid stamp, optional
+    doc.is_paid = True
+    doc.invoice_info = InvoiceInfo(1023, datetime.now(), datetime.now())  # Invoice info, optional
+    # Service Provider Info, optional
+    doc.service_provider_info = ServiceProviderInfo(
+        name=nombre,
+        street='Guatemala',
+        city='Guatemala',
+        post_code='222222',
+        vat_tax_number='7555605-7'
+    )
+    # Client info, optional
+    doc.client_info = ClientInfo(email=correo)
+    # Add Item
+    for x in libros:
+        doc.add_item(Item(x['id'], x['id'], x['cantidad'], x['precio']))
+    # Tax rate, optional
+    #doc.set_item_tax_rate(0)  # 20%
+    # Transactions detail, optional
+    #doc.add_transaction(Transaction('Paypal', 111, datetime.now(), 1))
+    #doc.add_transaction(Transaction('Stripe', 222, date.today(), 2))
+    # Optional
+    doc.set_bottom_tip("Email: ezreadcorp@gmail.com<br />No dudes en contactarnos para cualquier consulta.")
+    doc.finish()
+
 @app.route("/")
 def main():
     return "<p>orden_crear</p>"
