@@ -1,6 +1,9 @@
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from selenium.webdriver.remote.webdriver import WebDriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import time
 
 
@@ -12,8 +15,17 @@ class test1(unittest.TestCase):
         self.driver.get("http://192.168.1.100:8080/login")
         time.sleep(5)
 
-    def test_correct_authentication(self):
-        pass
+    def test1(self):
+        email_input = self.driver.find_element_by_id("email")
+        email_input.send_keys("prueba@gmail.com")
+        password_input = self.driver.find_element_by_id("password")
+        password_input.send_keys("test")
+        login_button = self.driver.find_element_by_class_name(
+            "MuiButton-label")
+        login_button.click()
+        WebDriverWait(self.driver, 3).until(EC.alert_is_present())
+        self.driver.switch_to.alert.accept()
+        time.sleep(5)
 
     def tearDown(self):
         self.driver.quit()
