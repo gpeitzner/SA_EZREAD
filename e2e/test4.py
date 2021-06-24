@@ -7,13 +7,26 @@ import time
 class test4(unittest.TestCase):
 
     def setUp(self):
+        HUB_URL = "localhost"
+        HOST_URL = "192.168.1.100"
         self.driver = webdriver.Remote(
-            command_executor="http://localhost:4444/wd/hub", desired_capabilities=DesiredCapabilities.FIREFOX)
-        self.driver.get("http://192.168.1.100:8080/login")
+            command_executor="http://"+HUB_URL+":4444/wd/hub", desired_capabilities=DesiredCapabilities.FIREFOX)
+        self.driver.get("http://"+HOST_URL+":8080/register")
         time.sleep(5)
 
-    def test_correct_authentication(self):
-        pass
+    def test4(self):
+        first_name_input = self.driver.find_element_by_id("nombre")
+        first_name_input.send_keys("Juan")
+        last_name_input = self.driver.find_element_by_id("apellido")
+        last_name_input.send_keys("Perez")
+        phone_input = self.driver.find_element_by_id("telefono")
+        phone_input.send_keys("12345678")
+        email_input = self.driver.find_element_by_id("correo")
+        email_input.send_keys("juanperez@gmail.com")
+        signup_button = self.driver.find_element_by_class_name(
+            "MuiButton-label")
+        signup_button.click()
+        time.sleep(5)
 
     def tearDown(self):
         self.driver.quit()
