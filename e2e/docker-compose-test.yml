@@ -1,0 +1,122 @@
+version: "3.1"
+services:
+  db:
+    image: mongo:latest
+    restart: always
+    env_file:
+      - ./.env-test
+    ports:
+      - 27017:27017
+    volumes:
+      - ./e2e/data.js:/docker-entrypoint-initdb.d/data.js
+  login:
+    image: gpeitzner/ezread_login:latest
+    restart: always
+    env_file:
+      - ./.env-test
+    ports:
+      - 5000:5000
+  usuario_crear:
+    image: gpeitzner/ezread_usuario_crear:latest
+    restart: always
+    env_file:
+      - ./.env-test
+    ports:
+      - 5002:5002
+  usuario_editar:
+    image: gpeitzner/ezread_usuario_editar:latest
+    restart: always
+    env_file:
+      - ./.env-test
+    ports:
+      - 5003:5003
+  usuario_eliminar:
+    image: gpeitzner/ezread_usuario_eliminar:latest
+    restart: always
+    env_file:
+      - ./.env-test
+    ports:
+      - 5004:5004
+  usuario_obtener:
+    image: gpeitzner/ezread_usuario_obtener:latest
+    restart: always
+    env_file:
+      - ./.env-test
+    ports:
+      - 5005:5005
+  libro_crear:
+    image: gpeitzner/ezread_libro_crear:latest
+    restart: always
+    env_file:
+      - ./.env-test
+    ports:
+      - 5006:5006
+  libro_editar:
+    image: gpeitzner/ezread_libro_editar:latest
+    restart: always
+    env_file:
+      - ./.env-test
+    ports:
+      - 5007:5007
+  libro_eliminar:
+    image: gpeitzner/ezread_libro_eliminar:latest
+    restart: always
+    env_file:
+      - ./.env-test
+    ports:
+      - 5008:5008
+  libro_obtener:
+    image: gpeitzner/ezread_libro_obtener:latest
+    restart: always
+    env_file:
+      - ./.env-test
+    ports:
+      - 5009:5009
+  libro_solicitar:
+    image: gpeitzner/ezread_libro_solicitar:latest
+    restart: always
+    env_file:
+      - ./.env-test
+    ports:
+      - 5014:5014
+  orden_crear:
+    image: gpeitzner/ezread_orden_crear:latest
+    restart: always
+    env_file:
+      - ./.env-test
+    ports:
+      - 5010:5010
+  orden_editar:
+    image: gpeitzner/ezread_orden_editar:latest
+    restart: always
+    env_file:
+      - ./.env-test
+    ports:
+      - 5011:5011
+  orden_eliminar:
+    image: gpeitzner/ezread_orden_eliminar:latest
+    restart: always
+    env_file:
+      - ./.env-test
+    ports:
+      - 5012:5012
+  orden_obtener:
+    image: gpeitzner/ezread_orden_obtener:latest
+    restart: always
+    env_file:
+      - ./.env-test
+    ports:
+      - 5013:5013
+  ui:
+    image: gpeitzner/ezread_ui:latest
+    restart: always
+    ports:
+      - 8000:80
+  test:
+    image: selenium/standalone-firefox:4.0.0-rc-1-prerelease-20210618
+    restart: always
+    ports:
+      - 4444:4444
+      - 7900:7900
+    volumes:
+      - ./e2e/image.jpg:/home/seluser/image.jpg

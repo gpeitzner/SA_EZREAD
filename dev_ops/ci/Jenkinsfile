@@ -53,8 +53,8 @@ pipeline {
             steps {
                 echo 'Starting tests ...'
                 withCredentials([file(credentialsId: 'BACKEND_TEST', variable: 'MY_BACKEND_TEST')]) {
-                    sh 'cp $MY_BACKEND_TEST ./.env-test'
-                    sh 'docker-compose -f ./docker-compose-test.yml up -d'
+                    sh 'cp $MY_BACKEND_TEST ./e2e/.env-test'
+                    sh 'docker-compose -f ./e2e/docker-compose-test.yml up -d'
                     echo 'Connect to http://test.ezread.ml:7900/ to view the tests'
                     sh 'sleep 30'
                     echo 'Executing e2e tests ...'
@@ -75,9 +75,9 @@ pipeline {
                     echo 'Running test 8 ...'
                     sh 'python3 ./e2e/test8.py'
                     sh 'sleep 10'
-                    sh 'docker-compose -f ./docker-compose-test.yml down'
+                    sh 'docker-compose -f ./e2e/docker-compose-test.yml down'
                     sh 'sleep 10'
-                    sh 'rm ./.env-test'
+                    sh 'rm ./e2e/.env-test'
                     echo ':]'
                 }
             }
