@@ -111,7 +111,7 @@ services:
     image: gpeitzner/ezread_ui:latest
     restart: always
     ports:
-      - 8080:80
+      - 8000:80
   test:
     image: selenium/standalone-firefox:4.0.0-rc-1-prerelease-20210618
     restart: always

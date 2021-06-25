@@ -13,7 +13,7 @@ class test3(unittest.TestCase):
         HOST_URL = "test.ezread.ml"
         self.driver = webdriver.Remote(
             command_executor="http://"+HUB_URL+":4444/wd/hub", desired_capabilities=DesiredCapabilities.FIREFOX)
-        self.driver.get("http://"+HOST_URL+":8080/register")
+        self.driver.get("http://"+HOST_URL+":8000/register")
         time.sleep(5)
 
     def test3(self):
