@@ -7,8 +7,8 @@ import time
 class test5(unittest.TestCase):
 
     def setUp(self):
-        HUB_URL = "localhost"
-        HOST_URL = "192.168.1.100"
+        HUB_URL = "test.ezread.ml"
+        HOST_URL = "test.ezread.ml"
         self.driver = webdriver.Remote(
             command_executor="http://"+HUB_URL+":4444/wd/hub", desired_capabilities=DesiredCapabilities.FIREFOX)
         self.driver.get("http://"+HOST_URL+":8080/register")
