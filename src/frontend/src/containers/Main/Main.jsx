@@ -140,9 +140,15 @@ const Main = () => {
 
   console.log({login})
 
-  // if(!login) {
-  //     return <div>Debes iniciar sesion</div>
-  // }
+  if(!login) {
+      return (
+      <div>
+        <div>Debes iniciar sesion</div>
+        <br/>
+        <Link to="/login">Regresar a login</Link>
+      </div>
+      )
+  }
 
 
 
