@@ -19,6 +19,7 @@ client = pymongo.MongoClient(
     host=db_host, port=db_port, username=db_user, password=db_password)
 db = client[str(db_name)]
 col = db["libros"]
+colLogs = db["logs"]
 
 
 @app.route("/")
@@ -58,7 +59,7 @@ def obtenerLibro():
                 return {'libro': {"id": str(libro['_id']), "Titulo": str(libro['Titulo']), "Editorial": str(
                         libro['Editorial']), "Autor": str(libro['Autor']), "Genero": str(libro['Genero']),
                     "Cantidad": libro['Cantidad'], "Activo": libro['Activo'], "Precio": libro['Precio'],
-                        "Imagen": libro['Imagen']}}
+                    "Imagen": libro['Imagen']}}
             else:
                 return {"mensaje": "Libro fuera de stock"}
 
@@ -125,7 +126,7 @@ def obtenerEditoriales():
                                 'Autor': "$Autor",
                                 'Cantidad': "$Cantidad",
                                 'Activo': "$Activo",
-                                'Imagen' : "$Imagen",
+                                'Imagen': "$Imagen",
                                 'Precio': "$Precio"
                             },
                             }
@@ -174,3 +175,21 @@ def obtenerbyEditorial():
             return {'libros': books}
         else:
             return {'libros': []}
+
+
+@app.route("/logs", methods=['GET'])  # obbtener todos los libros registrados.
+def logFunction():
+    if request.method == 'GET':
+        busqueda = colLogs.find()
+
+        if busqueda:
+            print('busqueda', busqueda)
+            logs = []
+            for log in busqueda:
+                print(log)
+                logs.append({"id": str(log['_id']), "Operacion": str(log['Operacion']), "Libro": str(
+                    log['Libro']), "Editorial": str(log['Editorial']), "Descripcion": str(log['Descripcion']), "Fecha": str(log['Fecha:'])})
+
+            return {'logs': logs}
+        else:
+            return {"logs": []}
