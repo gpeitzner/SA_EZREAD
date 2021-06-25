@@ -60,7 +60,7 @@ pipeline {
                     sh 'sh ./e2e/run.sh'
                     sh 'docker-compose -f ./docker-compose-test.yml down'
                     sh 'rm ./.env-test'
-                    sh ':]'
+                    echo ':]'
                 }
             }
         }
