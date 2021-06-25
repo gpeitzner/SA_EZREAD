@@ -38,6 +38,8 @@ import Cotizador from '../Cotizador'
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import AssistantIcon from '@material-ui/icons/Assistant';
 import BallotIcon from '@material-ui/icons/Ballot';
+import LockIcon from '@material-ui/icons/Lock';
+import Logs from '../Logs'
 
 
 const drawerWidth = 240;
@@ -138,9 +140,9 @@ const Main = () => {
 
   console.log({login})
 
-  if(!login) {
-      return <div>Debes iniciar sesion</div>
-  }
+  // if(!login) {
+  //     return <div>Debes iniciar sesion</div>
+  // }
 
 
 
@@ -213,6 +215,22 @@ const Main = () => {
             </ListItemIcon>
             <Link to="/users">
                 <ListItemText primary="Users" />
+            </Link>
+        </ListItem>
+        </List>
+            )
+        }
+        {
+            login.tipo === 'administrador' && (
+        <List>
+        <ListItem>
+            <ListItemIcon>
+                <Link to="/logs">
+                    <LockIcon />
+                </Link>
+            </ListItemIcon>
+            <Link to="/logs">
+                <ListItemText primary="Logs" />
             </Link>
         </ListItem>
         </List>
@@ -305,6 +323,9 @@ const Main = () => {
           </Route>
           <Route path="/cotizador">
             <Cotizador />
+          </Route>
+          <Route path="/logs">
+            <Logs />
           </Route>
           <Route path="/">
             <Books />
