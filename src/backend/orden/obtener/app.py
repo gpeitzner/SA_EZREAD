@@ -3,6 +3,7 @@ from bson.objectid import ObjectId
 import os
 import pymongo
 from flask_cors import CORS
+
 #OBTENER
 app = Flask(__name__)
 CORS(app)
@@ -27,8 +28,12 @@ def create():
         return {"usuario":existe['usuario'],"estado":existe['estado'],"libros":existe['libros']}
     else: #no existe
         return {"mensaje":"No tiene ordenes"}
+
 @app.route("/")
 def main():
     return "<p>orden_obtener</p>"
+
+
+
 #if __name__ == "__main__":
     #app.run(host="0.0.0.0",debug=True,port=5013)

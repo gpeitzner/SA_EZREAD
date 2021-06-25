@@ -27,11 +27,19 @@ import PeopleIcon from '@material-ui/icons/People';
 import Users from '../Users'
 import Books from '../Books'
 import AddBook from '../../components/AddBook'
+import RequestBook from '../../containers/RequestBook'
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { cartStatsState } from '../../recoil/selectors';
 import Cart from '../Cart/Cart';
 import { loginState } from '../../recoil/atoms';
+import RequestBookList from '../RequestBookList'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import Cotizador from '../Cotizador'
+import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
+import AssistantIcon from '@material-ui/icons/Assistant';
+import BallotIcon from '@material-ui/icons/Ballot';
+import LockIcon from '@material-ui/icons/Lock';
+import Logs from '../Logs'
 
 
 const drawerWidth = 240;
@@ -130,9 +138,13 @@ const Main = () => {
     setLogin(null)
   }
 
-  if(!login) {
-      return <div>Debes iniciar sesion</div>
-  }
+  console.log({login})
+
+  // if(!login) {
+  //     return <div>Debes iniciar sesion</div>
+  // }
+
+
 
     return ( <div className={classes.root}>
         <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
@@ -208,6 +220,71 @@ const Main = () => {
         </List>
             )
         }
+        {
+            login.tipo === 'administrador' && (
+        <List>
+        <ListItem>
+            <ListItemIcon>
+                <Link to="/logs">
+                    <LockIcon />
+                </Link>
+            </ListItemIcon>
+            <Link to="/logs">
+                <ListItemText primary="Logs" />
+            </Link>
+        </ListItem>
+        </List>
+            )
+        }
+        {
+            login.tipo === 'editor' && (
+        <List>
+        <ListItem>
+            <ListItemIcon>
+                <Link to="/book-request/list">
+                    <BallotIcon />
+                </Link>
+            </ListItemIcon>
+            <Link to="/book-request/list">
+                <ListItemText primary="Peticiones" />
+            </Link>
+        </ListItem>
+        </List>
+            )
+        }
+        {
+            login.tipo === 'editor' && (
+        <List>
+        <ListItem>
+            <ListItemIcon>
+                <Link to="/cotizador">
+                    <MonetizationOnIcon />
+                </Link>
+            </ListItemIcon>
+            <Link to="/cotizador">
+                <ListItemText primary="Cotizador" />
+            </Link>
+        </ListItem>
+        </List>
+            )
+        }
+        {
+            login.tipo === 'cliente' && (
+        <List>
+        <ListItem>
+            <ListItemIcon>
+                <Link to="/book-request">
+                    <AssistantIcon />
+                </Link>
+            </ListItemIcon>
+            <Link to="/book-request">
+                <ListItemText primary="Petición de libro" />
+            </Link>
+        </ListItem>
+        </List>
+            )
+        }
+        
         <List>
         <ListItem>
             <ListItemIcon>
@@ -237,6 +314,18 @@ const Main = () => {
           </Route>
           <Route path="/cart">
             <Cart />
+          </Route>
+          <Route path="/book-request/list">
+            <RequestBookList />
+          </Route>
+          <Route path="/book-request">
+            <RequestBook />
+          </Route>
+          <Route path="/cotizador">
+            <Cotizador />
+          </Route>
+          <Route path="/logs">
+            <Logs />
           </Route>
           <Route path="/">
             <Books />
