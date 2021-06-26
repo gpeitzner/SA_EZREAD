@@ -88,7 +88,7 @@ const RequestBook = () => {
                     {`El impuesto es de: ${impuestos[impuesto].impuesto.toFixed(2)}`}
                 </Typography>
                     <Typography component="h3" variant="h3">
-                        {`El total seria: ${(impuestos[impuesto].impuesto * precio).toFixed(2)}`}
+                        {`El total seria: ${((1+(impuestos[impuesto].impuesto/100)) * precio).toFixed(2)}`}
                     </Typography>
                 </div>
                     )}
