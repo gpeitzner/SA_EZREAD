@@ -7,8 +7,5 @@ export const cartState = atom({
 
 export const loginState = atom({
     key: 'loginState',
-    default: {
-      tipo: 'administrador',
-      nombre: 'Editorial USAC'
-    }
+    default: null
 })
