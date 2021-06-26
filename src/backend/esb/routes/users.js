@@ -20,6 +20,7 @@ router.post("/signup", function (req, res, next) {
 		});
 });
 
+/**Login users */
 router.post("/login", function (req, res, next) {
 	axios
 		.post(`http://${host}:5000/`, req.body)
