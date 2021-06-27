@@ -42,7 +42,7 @@ router.put("/", function (req, res, next) {
 /**DELETE books. */
 router.delete("/:id", function (req, res, next) {
 	axios
-		.delete(`http://${host}:/libros/eliminar?id=` + req.params.id)
+		.delete(`http://${host}:5008/libros/eliminar?id=` + req.params.id)
 		.then((response) => {
 			res.json(response.data);
 		})
