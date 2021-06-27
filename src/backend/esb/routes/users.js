@@ -3,11 +3,6 @@ var router = express.Router();
 const axios = require("axios").default;
 const host = process.env.HOST_URL || "localhost";
 
-/**GET users listing. */
-router.get("/", function (req, res, next) {
-	res.send("users");
-});
-
 /**Signup users */
 router.post("/signup", function (req, res, next) {
 	axios
@@ -16,7 +11,7 @@ router.post("/signup", function (req, res, next) {
 			res.json(response.data);
 		})
 		.catch((error) => {
-			res.json(error);
+			res.status(400).json(error);
 		});
 });
 
@@ -28,7 +23,7 @@ router.post("/login", function (req, res, next) {
 			res.json(response.data);
 		})
 		.catch((error) => {
-			res.json(error);
+			res.status(400).json(error);
 		});
 });
 
