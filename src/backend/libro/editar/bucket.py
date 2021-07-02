@@ -9,7 +9,7 @@ import imghdr
 
 class Bucket:
     """Clase para acceso fácil al cliente de S3 de AWS"""
-    BUCKET_NAME = 'books-pics'
+    BUCKET_NAME = creds.s3_bucket_name
 
     def __init__(self):
         self.CLIENT = boto3.client(
@@ -34,20 +34,21 @@ class Bucket:
                 break
         print("Extension OR Type of the Image =====>", res)
         ext = res
-        file_path = '{}-{}.{}'.format(user.replace(' ','_'), uuid.uuid4(), ext)
+        file_path = '{}-{}.{}'.format(user.replace(' ',
+                                      '_'), uuid.uuid4(), ext)
 
         with tempfile.TemporaryFile(suffix='.{}'.format(ext)) as f:
             f.write(file_content)
             f.seek(0)
 
-            response=self.CLIENT.put_object(
+            response = self.CLIENT.put_object(
                 Body=f,
                 Bucket=self.BUCKET_NAME,
                 Key=file_path,
                 ContentType='image/{}'.format(ext)
             )
-        
-        #print(response)
+
+        # print(response)
         return file_path
 
     def get_image64(self, image_path):

@@ -41,21 +41,20 @@ def actualizar():
 
         if busqueda:
             for book in busqueda:
-                if  str(book["_id"]) != content["id"]:
-                    print("book-> ",book["_id"]," id-> ", content["id"])
+                if str(book["_id"]) != content["id"]:
+                    print("book-> ", book["_id"], " id-> ", content["id"])
                     flag = True
                     break
 
-        
         if flag:
             return {"modificado": "ya existe"}
         else:
-            if str(content['Imagen']).find('https://books-pics.s3.us-east-2.amazonaws.com/') == -1  :
+            if str(content['Imagen']).find('https://ezreadbooks.s3.us-east-2.amazonaws.com/') == -1:
                 # hay que borrar
-                
-                if content["Imagen"]=="" or content["Imagen"]==" ":
-                    #no le estan agregando imagen
-                    content["Imagen"]= ""
+
+                if content["Imagen"] == "" or content["Imagen"] == " ":
+                    # no le estan agregando imagen
+                    content["Imagen"] = ""
                     content["Path"] = ""
                 else:
 
@@ -73,7 +72,7 @@ def actualizar():
 
                     content['Path'] = s3.write_image(
                         content['Titulo'], content['Imagen'], '')
-                    content['Imagen'] = 'https://books-pics.s3.us-east-2.amazonaws.com/' + \
+                    content['Imagen'] = 'https://ezreadbooks.s3.us-east-2.amazonaws.com/' + \
                         content['Path']
 
             if 'Path' in content:
@@ -120,7 +119,7 @@ def actualizar():
                     "Operacion": "Edición",
                     "Libro": content["Titulo"],
                     "Editorial": content["Editorial"],
-                    "Descripcion":"Se actualizaron parametros del libro",
+                    "Descripcion": "Se actualizaron parametros del libro",
                     "Fecha:": '{}-{}-{} {}:{}:{}'.format(now.day, now.month, now.year, now.hour, now.minute, now.second)
 
                 })
@@ -162,7 +161,7 @@ def descontarQuantity():
                             "Operacion": "Edición",
                             "Libro": content["Titulo"],
                             "Editorial": content["Editorial"],
-                            "Descripcion":"Se actualizó el stock del libro",
+                            "Descripcion": "Se actualizó el stock del libro",
                             "Fecha:": '{}-{}-{} {}:{}:{}'.format(now.day, now.month, now.year, now.hour, now.minute, now.second)
 
                         })

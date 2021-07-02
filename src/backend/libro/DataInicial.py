@@ -21,7 +21,7 @@ data = [
         "Autor": "Sonia El Hakim",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Alienta1.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Alienta1.jpg",
         "Path": "Alienta1.jpg",
         "Precio": 100.00
     },
@@ -32,7 +32,7 @@ data = [
         "Autor": "Jürgen Klaric",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Alienta2.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Alienta2.jpg",
         "Path": "Alienta2.jpg",
         "Precio": 100.00
     },
@@ -44,7 +44,7 @@ data = [
         "Autor": "Javier del Valle y Fernando Ruiz de Velasco",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Alienta3.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Alienta3.jpg",
         "Path": "Alienta3.jpg",
         "Precio": 100.00
     },
@@ -56,7 +56,7 @@ data = [
         "Autor": "Francisco Alcaide Hernández",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Alienta4.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Alienta4.jpg",
         "Path": "Alienta4.jpg",
         "Precio": 100.00
     },
@@ -67,7 +67,7 @@ data = [
         "Autor": "Miyamoto Musashi",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Alienta5.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Alienta5.jpg",
         "Path": "Alienta5.jpg",
         "Precio": 100.00
     },
@@ -78,7 +78,7 @@ data = [
         "Autor": "Ruben García Carnicero",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Alienta6.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Alienta6.jpg",
         "Path": "Alienta6.jpg",
         "Precio": 100.00
     },
@@ -89,7 +89,7 @@ data = [
         "Autor": "Sari Arponen",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Alienta7.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Alienta7.jpg",
         "Path": "Alienta7.jpg",
         "Precio": 100.00
     },
@@ -100,7 +100,7 @@ data = [
         "Autor": "Francisco García Vena",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Alienta8.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Alienta8.jpg",
         "Path": "Alienta8.jpg",
         "Precio": 100.00
     },
@@ -111,7 +111,7 @@ data = [
         "Autor": "Anxo Perez Rodriguez",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Alienta9.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Alienta9.jpg",
         "Path": "Alienta9.jpg",
         "Precio": 100.00
     },
@@ -122,7 +122,7 @@ data = [
         "Autor": "Mary Buffet y David Clark",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Alienta10.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Alienta10.jpg",
         "Path": "Alienta10.jpg",
         "Precio": 100.00
     },
@@ -133,7 +133,7 @@ data = [
         "Autor": "AA. VV.",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Comic1.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Comic1.jpg",
         "Path": "Comic1.jpg",
         "Precio": 100.00
     },
@@ -144,7 +144,7 @@ data = [
         "Autor": "Marazano Richard",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Comic2.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Comic2.jpg",
         "Path": "Comic2.jpg",
         "Precio": 100.00
     },
@@ -155,7 +155,7 @@ data = [
         "Autor": "Christie Golden",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Comic3.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Comic3.jpg",
         "Path": "Comic3.jpg",
         "Precio": 100.00
     },
@@ -166,7 +166,7 @@ data = [
         "Autor": "E. K. Johnston",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Comic4.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Comic4.jpg",
         "Path": "Comic4.jpg",
         "Precio": 100.00
     },
@@ -177,7 +177,7 @@ data = [
         "Autor": "George R. R. Martin",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Comic5.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Comic5.jpg",
         "Path": "Comic5.jpg",
         "Precio": 100.00
     },
@@ -188,7 +188,7 @@ data = [
         "Autor": "Akira Toriyama",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Comic6.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Comic6.jpg",
         "Path": "Comic6.jpg",
         "Precio": 100.00
     },
@@ -199,7 +199,7 @@ data = [
         "Autor": "Jim Davis",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Comic7.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Comic7.jpg",
         "Path": "Comic7.jpeg",
         "Precio": 100.00
     },
@@ -210,7 +210,7 @@ data = [
         "Autor": "David Kushner y Koren Shadmi",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Comic8.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Comic8.jpg",
         "Path": "Comic8.jpg",
         "Precio": 100.00
     },
@@ -221,7 +221,7 @@ data = [
         "Autor": "Ana Polegre, Enfermera en apuros",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Comic9.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Comic9.jpg",
         "Path": "Comic9.jpg",
         "Precio": 100.00
     },
@@ -232,7 +232,7 @@ data = [
         "Autor": "Stephen King y Bernie Wrightson",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Comic10.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Comic10.jpg",
         "Path": "Comic10.jpg",
         "Precio": 100.00
     },
@@ -243,7 +243,7 @@ data = [
         "Autor": "John Connolly y Jennifer Ridyard",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Tusquets1.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Tusquets1.jpg",
         "Path": "Tusquets1.jpg",
         "Precio": 100.00
     },
@@ -254,7 +254,7 @@ data = [
         "Autor": "Miguel Espinet",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Tusquets2.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Tusquets2.jpg",
         "Path": "Tusquets2.jpg",
         "Precio": 100.00
     },
@@ -265,7 +265,7 @@ data = [
         "Autor": "René Vásquez Díaz",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Tusquets3.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Tusquets3.jpg",
         "Path": "Tusquets3.jpg",
         "Precio": 100.00
     },
@@ -276,7 +276,7 @@ data = [
         "Autor": "Julian Jeff",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Tusquets4.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Tusquets4.jpg",
         "Path": "Tusquets4.jpg",
         "Precio": 100.00
     },
@@ -287,7 +287,7 @@ data = [
         "Autor": "Hans Christian von Baeyer",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Tusquets5.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Tusquets5.jpg",
         "Path": "Tusquets5.jpg",
         "Precio": 100.00
     },
@@ -298,7 +298,7 @@ data = [
         "Autor": "Arieh Ben-Naim",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Tusquets6.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Tusquets6.jpg",
         "Path": "Tusquets6.jpg",
         "Precio": 100.00
     },
@@ -309,7 +309,7 @@ data = [
         "Autor": "Stefphon Alexander",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Tusquets7.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Tusquets7.jpg",
         "Path": "Tusquets7.jpg",
         "Precio": 100.00
     },
@@ -320,7 +320,7 @@ data = [
         "Autor": "Federico Correo",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Tusquets8.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Tusquets8.jpg",
         "Path": "Tusquets8.jpg",
         "Precio": 100.00
     },
@@ -331,7 +331,7 @@ data = [
         "Autor": "Alice Miller",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Tusquets9.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Tusquets9.jpg",
         "Path": "Tusquets9.jpg",
         "Precio": 100.00
     },
@@ -342,7 +342,7 @@ data = [
         "Autor": "André Gide",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Tusquets10.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Tusquets10.jpg",
         "Path": "Tusquets10.jpg",
         "Precio": 100.00
     },
@@ -353,7 +353,7 @@ data = [
         "Autor": "David José Balleser",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/clic1.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/clic1.jpg",
         "Path": "clic1.jpg",
         "Precio": 100.00
 
@@ -365,7 +365,7 @@ data = [
         "Autor": "Francesc Marí",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/clic2.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/clic2.jpg",
         "Path": "clic2.jpg",
         "Precio": 100.00
     },
@@ -376,7 +376,7 @@ data = [
         "Autor": "Artur Amich",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/clic3.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/clic3.jpg",
         "Path": "clic3.jpg",
         "Precio": 100.00
     },
@@ -387,7 +387,7 @@ data = [
         "Autor": "Enrique Gómez Medina",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/clic4.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/clic4.jpg",
         "Path": "clic4.jpg",
         "Precio": 100.00
     },
@@ -398,7 +398,7 @@ data = [
         "Autor": "Moruena Estríngana",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/clic5.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/clic5.jpg",
         "Path": "clic5.jpg",
         "Precio": 100.00
     },
@@ -409,7 +409,7 @@ data = [
         "Autor": "J. F. Morgan",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/clic6.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/clic6.jpg",
         "Path": "clic6.jpg",
         "Precio": 100.00
     },
@@ -420,7 +420,7 @@ data = [
         "Autor": "Calista Sweet",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/clic7.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/clic7.jpg",
         "Path": "clic7.jpg",
         "Precio": 100.00
     },
@@ -431,7 +431,7 @@ data = [
         "Autor": "Jesus Callejo",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/clic8.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/clic8.jpg",
         "Path": "clic8.jpg",
         "Precio": 100.00
     },
@@ -443,7 +443,7 @@ data = [
         "Autor": "Miguel Angel Francisco",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/clic9.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/clic9.jpg",
         "Path": "clic9.jpg",
         "Precio": 100.00
     },
@@ -454,7 +454,7 @@ data = [
         "Autor": "Antonio Orbe",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/clic10.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/clic10.jpg",
         "Path": "clic10.jpg",
         "Precio": 100.00
     },
@@ -465,7 +465,7 @@ data = [
         "Autor": "Antonio Orbe",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Espasa1.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Espasa1.jpg",
         "Path": "Espasa1.jpg",
         "Precio": 100.00
     },
@@ -476,7 +476,7 @@ data = [
         "Autor": "José Ortega y Gasset",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Espasa2.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Espasa2.jpg",
         "Path": "Espasa2.jpg",
         "Precio": 100.00
     },
@@ -487,7 +487,7 @@ data = [
         "Autor": "Antonio Escohotado",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Espasa3.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Espasa3.jpg",
         "Path": "Espasa3.jpg",
         "Precio": 100.00
     },
@@ -498,7 +498,7 @@ data = [
         "Autor": "Carlos del Amor",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Espasa4.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Espasa4.jpg",
         "Path": "Espasa4.jpg",
         "Precio": 100.00
     },
@@ -509,7 +509,7 @@ data = [
         "Autor": "Albert Rivera",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Espasa5.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Espasa5.jpg",
         "Path": "Espasa5.jpg",
         "Precio": 100.00
     },
@@ -520,7 +520,7 @@ data = [
         "Autor": "Lola Venegags, Isabe M. Reverte y Margo Venegas",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Espasa6.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Espasa6.jpg",
         "Path": "Espasa6.jpg",
         "Precio": 100.00
     },
@@ -531,7 +531,7 @@ data = [
         "Autor": "Cristina Villanueva",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Espasa7.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Espasa7.jpg",
         "Path": "Espasa7.jpg",
         "Precio": 100.00
     },
@@ -542,7 +542,7 @@ data = [
         "Autor": "John Ajvide LIndqvist",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Espasa8.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Espasa8.jpg",
         "Path": "Espasa8.jpg",
         "Precio": 100.00
     },
@@ -553,7 +553,7 @@ data = [
         "Autor": "Juan Miguel Aguilera",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Espasa9.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Espasa9.jpg",
         "Path": "Espasa9.jpg",
         "Precio": 100.00
     },
@@ -564,7 +564,7 @@ data = [
         "Autor": "Jorge Magano",
         "Activo": 1,
         "Cantidad": 25,
-        "Imagen": "https://books-pics.s3.us-east-2.amazonaws.com/Espasa10.jpg",
+        "Imagen": "https://ezreadbooks.s3.us-east-2.amazonaws.com/Espasa10.jpg",
         "Path": "Espasa10.jpg",
         "Precio": 100.00
     }
